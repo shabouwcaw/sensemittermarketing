@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emhance AI - Emotion-Powered Creative Testing</title>
+    <meta name="description" content="Emotion-based creative testing that shows you which ads truly hook players before you scale spend. See what captures attention, sparks emotion, and drives clicks.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0E1A2B', 
+                            darker: '#050a11',
+                            purple: '#6B5AED', 
+                            pink: '#F36ED2',    
+                            green: '#86E27B',  
+                            surface: '#18233B',
+                            light: '#C9D3FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(107, 90, 237, 0.25) 0%, rgba(14, 26, 43, 0) 70%)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'scroll': 'scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0E1A2B;
+            color: #F5F7FF;
+        }
+        
+        .glass-panel {
+            background: rgba(24, 35, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 211, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #F36ED2, #6B5AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-gradient-green {
+            background: linear-gradient(to right, #86E27B, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0E1A2B; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #18233B; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6B5AED; 
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden" x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+
+    <!-- NAV -->
+    <nav :class="{ 'bg-brand-dark/90 backdrop-blur-md border-b border-white/10': scrolled, 'bg-transparent': !scrolled }" class="fixed w-full z-50 transition-all duration-300 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white font-bold shadow-[0_0_10px_rgba(243,110,210,0.5)]">
+                        E
+                    </div>
+                    <span class="font-display font-bold text-xl tracking-tight text-white">Emhance AI</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#overview" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Overview</a>
+                    <a href="#use-cases" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Use Cases</a>
+                    <a href="#how-it-works" class="text-brand-light hover:text-white transition-colors text-sm font-medium">How it Works</a>
+                    <a href="#comparison" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Why Us</a>
+                    <a href="#demo" class="px-5 py-2.5 rounded-full bg-brand-purple hover:bg-brand-pink text-white text-sm font-semibold transition-all shadow-[0_0_15px_rgba(107,90,237,0.5)] hover:shadow-[0_0_25px_rgba(243,110,210,0.5)] hover:-translate-y-0.5">
+                        Request Demo
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white hover:text-brand-pink focus:outline-none transition-colors">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="md:hidden bg-brand-darker border-b border-white/10 absolute w-full shadow-2xl z-50">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#overview" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-brand-surface hover:text-brand-pink transition-colors" @click="mobileMenuOpen = false">Overview</a>
+                <a href="#use-cases" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-brand-surface hover:text-brand-pink transition-colors" @click="mobileMenuOpen = false">Use Cases</a>
+                <a href="#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-brand-surface hover:text-brand-pink transition-colors" @click="mobileMenuOpen = false">How it Works</a>
+                <a href="#demo" class="block px-3 py-2 mt-4 text-center rounded-md text-base font-bold bg-brand-purple text-white hover:bg-brand-pink transition-colors shadow-lg" @click="mobileMenuOpen = false">Request Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-hero-glow"></div>
+        <div class="absolute inset-0 grid-bg opacity-30"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                
+                <div class="text-left mb-12 lg:mb-0">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 hover:bg-white/10 transition-colors cursor-default">
+                        <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+                        <span class="text-xs font-mono text-brand-green uppercase tracking-wide">Emotion-Powered Creative Testing</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight leading-tight mb-6">
+                        Understand what<br />
+                        truly <span class="text-gradient">hooks players</span>
+                    </h1>
+                    
+                    <p class="mt-4 text-xl text-brand-light/80 max-w-2xl leading-relaxed">
+                        Deconstruct every video and playable ad into the moments that capture attention, spark emotion, and drive clicks — and build a library of winning recipes.
+                    </p>
+                    
+                    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-start items-center">
+                        <a href="#demo" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-brand-dark font-bold hover:bg-brand-light transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transform hover:scale-105 group">
+                            Get a demo <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative animate-float">
+                    <div class="absolute -inset-4 bg-brand-purple/30 rounded-full blur-3xl opacity-40"></div>
+                    
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-brand-darker">
+                        <div class="bg-brand-surface border-b border-white/10 px-4 py-3 flex items-center gap-2">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                            </div>
+                            <div class="ml-4 px-3 py-1 bg-black/20 rounded text-[10px] text-white/30 font-mono w-full text-center truncate">emhance_creative_insight_live.exe</div>
+                        </div>
+                        
+                        <div class="relative aspect-video bg-black group">
+                            <!-- Placeholder for video; using a poster image to represent the video area if video fails -->
+                            <video class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1600&auto=format&fit=crop">
+                                <source src="https://www.singular.net/wp-content/uploads/2025/11/Singular_AI_silent_small.mp4" type="video/mp4">
+                                <div class="w-full h-full flex items-center justify-center bg-brand-darker">
+                                    <div class="text-center">
+                                        <i data-lucide="play-circle" class="w-12 h-12 text-brand-purple mx-auto mb-2 opacity-50"></i>
+                                        <p class="text-brand-light/50 text-sm">Creative Test Visualization</p>
+                                    </div>
+                                </div>
+                            </video>
+                            
+                            <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-2 py-1 rounded border border-brand-green/30 text-brand-green text-xs font-mono flex items-center gap-1">
+                                <span class="animate-pulse w-2 h-2 rounded-full bg-brand-green"></span> CREATIVE TEST LIVE
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur rounded-xl px-4 py-3 flex items-center justify-between gap-4 text-[11px] border border-white/10">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-brand-pink"></i>
+                                    <span class="text-white">Peak emotion at 03.2s — hero reveal</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="trending-up" class="w-4 h-4 text-brand-green"></i>
+                                    <span class="text-white">+31% predicted CTR vs baseline</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Fake Eye Tracking Overlay (Visual Effect) -->
+                            <div class="absolute top-1/3 left-1/2 w-16 h-16 bg-brand-purple/20 rounded-full blur-xl animate-pulse"></div>
+                            <div class="absolute top-1/4 left-1/3 w-12 h-12 bg-brand-pink/20 rounded-full blur-xl animate-pulse delay-75"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="border-y border-white/5 bg-black/20 overflow-hidden py-10">
+        <p class="text-center text-sm font-medium text-brand-light/40 mb-8 uppercase tracking-widest">Trusted by data-obsessed game teams</p>
+        <div class="relative w-full overflow-hidden">
+            <div class="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-brand-dark to-transparent z-10"></div>
+            <div class="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-brand-dark to-transparent z-10"></div>
+            
+            <div class="inline-flex animate-scroll hover:[animation-play-state:paused] whitespace-nowrap">
+                <div class="flex items-center gap-16 mx-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-300">
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="ghost" class="w-5 h-5"></i> VOODOO</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5"></i> GOOGLE</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="monitor" class="w-5 h-5"></i> MYTONA</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="gamepad-2" class="w-5 h-5"></i> VIZOR</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="users" class="w-5 h-5"></i> NEXTERS</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="crosshair" class="w-5 h-5"></i> PIXONIC</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5"></i> SAYGAMES</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="swords" class="w-5 h-5"></i> WARGAMING</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="factory" class="w-5 h-5"></i> KOLIBRI</span>
+                </div>
+                <!-- Duplicate for infinite scroll -->
+                <div class="flex items-center gap-16 mx-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-300">
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="ghost" class="w-5 h-5"></i> VOODOO</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5"></i> GOOGLE</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="monitor" class="w-5 h-5"></i> MYTONA</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="gamepad-2" class="w-5 h-5"></i> VIZOR</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="users" class="w-5 h-5"></i> NEXTERS</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="crosshair" class="w-5 h-5"></i> PIXONIC</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5"></i> SAYGAMES</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="swords" class="w-5 h-5"></i> WARGAMING</span>
+                    <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="factory" class="w-5 h-5"></i> KOLIBRI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">
+                    CTR shows you <span class="text-gradient">what</span> happened.<br />
+                    Emhance AI shows you <span class="text-gradient-green">why</span>.
+                </h2>
+                <p class="text-lg text-brand-light/70 max-w-2xl mx-auto">
+                    Creative fatigue quietly kills UA performance. CPIs rise, CTRs fall, and new ads ship on guesswork. We translate every glance and micro-expression in your ads into clear guidance on what to cut, keep, and scale.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-pink/50">
+                    <div class="w-12 h-12 bg-brand-pink/20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="focus" class="w-6 h-6 text-brand-pink"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">See attention in real time</h3>
+                    <p class="text-brand-light/70 leading-relaxed">
+                        Understand exactly where viewers look in the first seconds of an impression. Spot scenes that grab attention and scenes that quietly lose it.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-purple/50">
+                    <div class="w-12 h-12 bg-brand-purple/20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="smile-plus" class="w-6 h-6 text-brand-purple"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Measure emotional lift</h3>
+                    <p class="text-brand-light/70 leading-relaxed">
+                        Link positive and negative emotional peaks to specific frames, hooks, and CTAs — and prioritise where emotional lift is highest.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-green/50">
+                    <div class="w-12 h-12 bg-brand-green/20 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="layers" class="w-6 h-6 text-brand-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Align UA, creative & product</h3>
+                    <p class="text-brand-light/70 leading-relaxed">
+                        Give all teams the same second-by-second creative breakdown, with shared evidence on what truly converts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section id="use-cases" class="py-24 bg-brand-surface relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-dark/50 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="text-brand-green font-mono text-sm tracking-wider uppercase mb-2 block">Applications</span>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold">What to test in creatives?</h2>
+                </div>
+                <p class="text-brand-light/60 mt-4 md:mt-0 md:text-right max-w-sm">
+                    Use one study to understand why some ads win, why others stall, and what patterns drive repeatable performance.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Ads bundle</h3>
+                        <i data-lucide="film" class="text-brand-purple group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-sm text-brand-light/70">
+                        Test multiple creative concepts side by side. See which hooks, formats, and structures stand out in a crowded feed.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Playable ads</h3>
+                        <i data-lucide="touchpad" class="text-brand-pink group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-sm text-brand-light/70">
+                        Replicate the playable ad experience and map frustration, delight, and confusion to each interaction step.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Low vs. top performers</h3>
+                        <i data-lucide="split-square-horizontal" class="text-brand-green group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-sm text-brand-light/70">
+                        Compare weak and strong ads to pinpoint the exact moments that separate winners from wasted spend.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Competitor analysis</h3>
+                        <i data-lucide="trophy" class="text-yellow-400 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-sm text-brand-light/70">
+                        Deconstruct creative ideas from top-grossing games and closest competitors in your genre to learn what they do right.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Best practices library</h3>
+                        <i data-lucide="library" class="text-blue-400 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-sm text-brand-light/70">
+                        Build a bank of proven patterns by analysing your top performers by impression score and emotional impact.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-dashed border-white/20">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-white">Ad set + ASO funnel</h3>
+                        <i data-lucide="route" class="text-brand-light group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <p class="text-sm text-brand-light/70">
+                        Understand how a creative handoff into custom store pages feels end to end — and where players drop between ad and store.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section id="comparison" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-display font-bold text-center mb-16">Why upgrade creative testing with AI?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-white/10 rounded-2xl overflow-hidden">
+                <div class="bg-brand-surface/50 p-10 flex flex-col">
+                    <h3 class="text-xl font-bold text-brand-light/50 mb-6 flex items-center gap-2">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i> Regular Creative Testing
+                    </h3>
+                    <ul class="space-y-6 text-brand-light/50">
+                        <li class="flex gap-3">
+                            <i data-lucide="minus" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+                            <span>Relies only on CTR, IPM, and ROAS after the fact</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i data-lucide="minus" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+                            <span>Requires high media spend to find a few winners</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i data-lucide="minus" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+                            <span>Manual post-mortems with subjective creative opinions</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <i data-lucide="minus" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+                            <span>Little insight into why viewers scroll past your ad</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-surface p-10 relative">
+                    <div class="absolute inset-0 bg-brand-purple/5"></div>
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brand-purple/20 blur-xl"></div>
+                    
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2 relative z-10">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-brand-green"></i> Emhance AI for Creatives
+                    </h3>
+                    <ul class="space-y-6 relative z-10">
+                        <li class="flex gap-3 text-white">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5"></i>
+                            <span>Combines emotion, attention, and performance for each ad</span>
+                        </li>
+                        <li class="flex gap-3 text-white">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5"></i>
+                            <span>Builds a library of high-performing hooks, CTAs and loops so you can iterate</span>
+                        </li>
+                        <li class="flex gap-3 text-white">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5"></i>
+                            <span>Automates ad grouping and recommendations based on real engagement</span>
+                        </li>
+                        <li class="flex gap-3 text-white">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5"></i>
+                            <span>Gives UA, creative, and product one shared view of what works</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="py-24 bg-brand-darker relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-purple font-mono text-sm tracking-wider uppercase mb-2 block">Workflow</span>
+                <h2 class="text-3xl md:text-5xl font-display font-bold">How creative testing works</h2>
+            </div>
+
+            <div class="relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="relative group">
+                        <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-purple hover:bg-white/5 transition-colors">
+                            <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-purple rounded-full flex items-center justify-center font-bold text-white shadow-lg shadow-brand-purple/50">1</span>
+                            <h3 class="text-xl font-bold mb-3">Upload creatives</h3>
+                            <p class="text-brand-light/70 text-sm">
+                                Add video ads, playables, and concept variations to the dashboard. Group them into bundles for side-by-side analysis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-purple/80 hover:bg-white/5 transition-colors">
+                            <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-surface border border-white/10 rounded-full flex items-center justify-center font-bold text-white">2</span>
+                            <h3 class="text-xl font-bold mb-3">Recruit participants</h3>
+                            <p class="text-brand-light/70 text-sm">
+                                Use your own audience or our gamer panels by GEO and genre. Participants watch or interact with your ads on their devices.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-purple/60 hover:bg-white/5 transition-colors">
+                            <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-surface border border-white/10 rounded-full flex items-center justify-center font-bold text-white">3</span>
+                            <h3 class="text-xl font-bold mb-3">Capture emotion & gaze</h3>
+                            <p class="text-brand-light/70 text-sm">
+                                We record facial expressions, gaze, and interaction paths, translating hundreds of data points per second into focus and emotion.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-pink/60 hover:bg-white/5 transition-colors">
+                            <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-surface border border-white/10 rounded-full flex items-center justify-center font-bold text-white">4</span>
+                            <h3 class="text-xl font-bold mb-3">AI decoding</h3>
+                            <p class="text-brand-light/70 text-sm">
+                                Neural networks map attention peaks, drop-offs, and emotional shifts to specific scenes, hooks, and CTAs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-pink/80 hover:bg-white/5 transition-colors">
+                            <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-surface border border-white/10 rounded-full flex items-center justify-center font-bold text-white">5</span>
+                            <h3 class="text-xl font-bold mb-3">Actionable breakdown</h3>
+                            <p class="text-brand-light/70 text-sm">
+                                Get attention heatmaps, second-by-second graphs, and “boost / trim / reorder” guidance for each creative.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-pink hover:bg-white/5 transition-colors">
+                            <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-pink rounded-full flex items-center justify-center font-bold text-white shadow-lg shadow-brand-pink/50">6</span>
+                            <h3 class="text-xl font-bold mb-3">Launch with confidence</h3>
+                            <p class="text-brand-light/70 text-sm">
+                                Take only refined, high-confidence creatives into live UA campaigns. Reduce wasted tests and scale proven patterns.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-purple/5"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-wrap justify-center gap-12 md:gap-24 text-center">
+                <div class="transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-5xl md:text-6xl font-display font-bold text-white mb-2">420<span class="text-brand-pink">+</span></div>
+                    <div class="text-brand-light/60 uppercase tracking-widest text-xs">Signals per second</div>
+                </div>
+                <div class="transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-5xl md:text-6xl font-display font-bold text-white mb-2">2<span class="text-brand-green">x</span></div>
+                    <div class="text-brand-light/60 uppercase tracking-widest text-xs">Faster creative cycles</div>
+                </div>
+                <div class="transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-5xl md:text-6xl font-display font-bold text-white mb-2">25<span class="text-brand-purple">%</span></div>
+                    <div class="text-brand-light/60 uppercase tracking-widest text-xs">Fewer wasted tests</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO FORM -->
+    <section id="demo" class="py-24 relative overflow-hidden bg-gradient-to-br from-brand-surface to-brand-dark">
+        <div class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-brand-purple rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+        <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-brand-green rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="glass-panel rounded-3xl p-8 md:p-16 border border-white/10 shadow-2xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Ready to boost CTR and IPM?</h2>
+                    <p class="text-lg text-brand-light/80">
+                        Request a creative testing demo and get a walkthrough of attention heatmaps, emotion curves, and second-by-second analysis on your own ads.
+                    </p>
+                </div>
+
+                <form class="max-w-md mx-auto space-y-4" onsubmit="event.preventDefault();">
+                    <div>
+                        <label class="block text-sm font-medium text-brand-light mb-1">Work Email</label>
+                        <input type="email" placeholder="name@studio.com" class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-brand-light/30 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-brand-light mb-1">Studio / Company</label>
+                        <input type="text" placeholder="Studio Name" class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-brand-light/30 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-brand-light mb-1">What do you want to test?</label>
+                        <textarea placeholder="e.g. 5 video concepts + 2 playables for our next UA burst across US/DE/FR." class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-brand-light/30 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all" rows="3"></textarea>
+                    </div>
+
+                    <button class="w-full py-4 rounded-lg bg-gradient-to-r from-brand-purple to-brand-pink hover:from-brand-purple/90 hover:to-brand-pink/90 text-white font-bold text-lg shadow-lg hover:shadow-brand-purple/25 transition-all transform hover:-translate-y-1">
+                        Get a demo
+                    </button>
+                    
+                    <p class="text-xs text-center text-brand-light/40 mt-4">
+                        By clicking "Get a demo" you agree to our Terms. No credit card required.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black/40 border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white text-xs font-bold">E</div>
+                    <span class="font-display font-bold text-lg text-white">Emhance AI</span>
+                </div>
+                
+                <div class="flex gap-8 text-sm text-brand-light/60">
+                    <a href="#" class="hover:text-white transition-colors">Platform</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <div class="text-sm text-brand-light/40">
+                    © 2025 Emhance AI. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
