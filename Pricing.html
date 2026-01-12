@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emhance AI – Pricing</title>
+    <meta name="description" content="Flexible Emhance AI plans based on Study Minutes, built for game studios at every stage of growth.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0E1A2B',
+                            darker: '#050a11',
+                            purple: '#6B5AED',
+                            pink: '#F36ED2',
+                            green: '#86E27B',
+                            surface: '#F5F7FF',
+                            light: '#C9D3FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(107, 90, 237, 0.25) 0%, rgba(14, 26, 43, 0) 70%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0E1A2B;
+            color: #F5F7FF;
+        }
+
+        .glass-panel {
+            background: rgba(245, 247, 255, 0.06);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(201, 211, 255, 0.35);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #F36ED2, #6B5AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden" x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+
+    <!-- NAV -->
+    <nav :class="{ 'bg-brand-dark/90 backdrop-blur-md border-b border-white/10': scrolled, 'bg-transparent': !scrolled }" class="fixed w-full z-50 transition-all duration-300 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white font-bold">
+                        E
+                    </div>
+                    <span class="font-display font-bold text-xl tracking-tight text-white">Emhance AI</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Platform</a>
+                    <a href="#plans" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Pricing</a>
+                    <a href="#faq" class="text-brand-light hover:text-white transition-colors text-sm font-medium">FAQ</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-purple hover:bg-brand-pink text-white text-sm font-semibold transition-all shadow-[0_0_15px_rgba(107,90,237,0.5)] hover:shadow-[0_0_25px_rgba(243,110,210,0.5)]">
+                        Talk to Sales
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white hover:text-brand-pink focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-brand-darker border-b border-white/10 absolute w-full shadow-2xl">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#plans" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-pink" @click="mobileMenuOpen = false">Pricing</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-pink" @click="mobileMenuOpen = false">FAQ</a>
+                <a href="#contact" class="block px-3 py-2 mt-4 text-center rounded-md text-base font-bold bg-brand-purple text-white" @click="mobileMenuOpen = false">Talk to Sales</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+        <div class="absolute inset-0 bg-hero-glow opacity-80"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-4">
+                Flexible bundles powered by<br>
+                <span class="text-gradient">Study Minutes</span>
+            </h1>
+            <p class="text-lg md:text-xl text-brand-light/80 max-w-3xl mx-auto">
+                Emhance AI pricing is based on Study Minutes – the time our models spend analysing your sessions and assets.  
+                Use your minutes across playtests, creative tests, ASO studies, and more as your roadmap evolves.
+            </p>
+        </div>
+    </section>
+
+    <!-- PLANS -->
+    <section id="plans" class="pb-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+
+                <!-- Starter -->
+                <div class="glass-panel rounded-3xl p-6 md:p-8 flex flex-col h-full bg-white/5">
+                    <h2 class="text-brand-purple text-sm font-semibold tracking-widest uppercase mb-2">Starter</h2>
+                    <p class="text-sm text-brand-light/70 mb-6">
+                        Ideal for studios with a few games and minimal annual research.
+                    </p>
+
+                    <div class="mb-6">
+                        <div class="text-xs font-semibold tracking-widest text-brand-light/60 uppercase mb-1">
+                            400 Study Minutes
+                        </div>
+                        <div class="text-xs text-brand-light/50">
+                            ≈ 6 hours of Emhance AI analysis time.
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-brand-light/90 flex-1">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Test Builder</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Test moderation</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>EmSight AI analysis &amp; recommendations</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Playtests</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Creative tests</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Participants included</span>
+                        </li>
+                    </ul>
+
+                    <button class="mt-8 w-full py-3 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/10 transition-all">
+                        Talk to us about Starter
+                    </button>
+                </div>
+
+                <!-- Core -->
+                <div class="glass-panel rounded-3xl p-6 md:p-8 flex flex-col h-full bg-white/5">
+                    <h2 class="text-brand-purple text-sm font-semibold tracking-widest uppercase mb-2">Core</h2>
+                    <p class="text-sm text-brand-light/70 mb-6">
+                        Ideal for studios with a handful of games and bi-annual research.
+                    </p>
+
+                    <div class="mb-6">
+                        <div class="text-xs font-semibold tracking-widest text-brand-light/60 uppercase mb-1">
+                            1600 Study Minutes
+                        </div>
+                        <div class="text-xs text-brand-light/50">
+                            ≈ 26 hours of Emhance AI analysis time.
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-brand-light/90 flex-1">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Everything in Starter</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>ASO tests</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Custom surveys</span>
+                        </li>
+                    </ul>
+
+                    <button class="mt-8 w-full py-3 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/10 transition-all">
+                        Talk to us about Core
+                    </button>
+                </div>
+
+                <!-- Growth -->
+                <div class="glass-panel rounded-3xl p-6 md:p-8 flex flex-col h-full bg-white/5">
+                    <h2 class="text-brand-purple text-sm font-semibold tracking-widest uppercase mb-2">Growth</h2>
+                    <p class="text-sm text-brand-light/70 mb-6">
+                        Ideal for studios with many games and quarterly research cadences.
+                    </p>
+
+                    <div class="mb-6">
+                        <div class="text-xs font-semibold tracking-widest text-brand-light/60 uppercase mb-1">
+                            3300 Study Minutes
+                        </div>
+                        <div class="text-xs text-brand-light/50">
+                            ≈ 55 hours of Emhance AI analysis time.
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-brand-light/90 flex-1">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Everything in Core</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Usability tests</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Funnel tests</span>
+                        </li>
+                    </ul>
+
+                    <button class="mt-8 w-full py-3 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/10 transition-all">
+                        Talk to us about Growth
+                    </button>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="glass-panel rounded-3xl p-6 md:p-8 flex flex-col h-full bg-white/5">
+                    <h2 class="text-brand-purple text-sm font-semibold tracking-widest uppercase mb-2">Enterprise</h2>
+                    <p class="text-sm text-brand-light/70 mb-6">
+                        Ideal for studios with many games and continuous research programmes.
+                    </p>
+
+                    <div class="mb-6">
+                        <div class="text-xs font-semibold tracking-widest text-brand-light/60 uppercase mb-1">
+                            6600 Study Minutes
+                        </div>
+                        <div class="text-xs text-brand-light/50">
+                            ≈ 110 hours of Emhance AI analysis time.
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-brand-light/90 flex-1">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Everything in Growth</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Custom tests across all methods</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle2" class="w-4 h-4 mt-0.5 text-brand-green"></i>
+                            <span>Design partner access &amp; roadmap input</span>
+                        </li>
+                    </ul>
+
+                    <button class="mt-8 w-full py-3 rounded-full bg-gradient-to-r from-brand-purple to-brand-pink text-sm font-semibold text-white shadow-lg hover:shadow-brand-purple/40 transition-all">
+                        Discuss Enterprise plan
+                    </button>
+                </div>
+            </div>
+
+            <p class="mt-10 text-xs text-center text-brand-light/60 max-w-3xl mx-auto">
+                All Study Minutes are flexible and can be applied to different test types based on your plan.  
+                Minutes are consumed by Emhance AI processing time and can be used across playtesting, UX testing, creative testing and ASO studies.  
+                Minutes are valid for 365 days from purchase. Prepayment required. Respondent recruitment is included by default.
+            </p>
+        </div>
+    </section>
+
+    <!-- SIMPLE CONTACT SECTION (Moved) -->
+    <section id="contact" class="pb-16 pt-4">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl md:text-3xl font-display font-bold mb-3">Need a custom plan?</h2>
+            <p class="text-brand-light/80 mb-6">
+                If your studio runs large-scale tests, operates across many regions, or needs bespoke workflows, we set up custom Study Minute bundles and services.
+            </p>
+            <a href="mailto:sales@emhance.ai" class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-white text-brand-dark font-semibold text-sm hover:bg-brand-light transition-all">
+                Email our sales team
+            </a>
+        </div>
+    </section>
+
+    <!-- METHODS TABLE SECTION -->
+    <section class="pb-20 pt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-3xl overflow-hidden bg-white/5 overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="border-b border-white/10 text-xs uppercase tracking-wider text-brand-purple">
+                            <th class="p-6 font-bold w-[15%]">Methods</th>
+                            <th class="p-6 font-bold w-[25%]">Uncover WHY behind</th>
+                            <th class="p-6 font-bold w-[30%]">What we do</th>
+                            <th class="p-6 font-bold w-[30%]">What you get</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10 text-sm text-brand-light/90">
+                        <!-- FTUE Emotional Benchmarking -->
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-6 font-semibold text-white align-top">FTUE Emotional Benchmarking</td>
+                            <td class="p-6 align-top">
+                                <ul class="list-disc list-inside space-y-2 marker:text-brand-pink">
+                                    <li>Weak Day-1 retention</li>
+                                </ul>
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Emotion analysis of the early game experience, uncovering the precise moments of friction or delight.
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Pinpoint friction, double-down on what's working and lift Day-1 retention.
+                            </td>
+                        </tr>
+
+                        <!-- Emo-Playtesting -->
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-6 font-semibold text-white align-top">Emo-Playtesting</td>
+                            <td class="p-6 align-top">
+                                <ul class="list-disc list-inside space-y-2 marker:text-brand-pink">
+                                    <li>High attrition at key gameplay moments or feature introduction</li>
+                                </ul>
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Tracking emotional feedback of live sessions for any portion of the game.
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Isolate the split-second moments where the game works or doesn't, without interrupting the flow or relying on the user to remember the problem later.
+                            </td>
+                        </tr>
+
+                        <!-- Emo-UX Testing -->
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-6 font-semibold text-white align-top">Emo-UX Testing</td>
+                            <td class="p-6 align-top">
+                                <ul class="list-disc list-inside space-y-2 marker:text-brand-pink">
+                                    <li>Usability issues distorting how players judge the game — and your prioritization of fixes</li>
+                                </ul>
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Combines traditional UX testing with emotion tracking to reveal not just what's broken, but how it feels.
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Reveals both the UX issues and their emotional costs. Knowing the intensity of frustration associated with each issue enables a studio to effectively prioritize which fixes will yield the greatest impact on player enjoyment.
+                            </td>
+                        </tr>
+
+                        <!-- Video Creative Testing -->
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-6 font-semibold text-white align-top">Video Creative Testing</td>
+                            <td class="p-6 align-top">
+                                <ul class="list-disc list-inside space-y-2 marker:text-brand-pink">
+                                    <li>Low ad-to-store conversion</li>
+                                </ul>
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Analyzing the emotional response to video assets to evaluate user appeal and engagement, providing frame-by-frame, subconscious insights.
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Discover which creative elements drive or diminish desire and anticipation.
+                            </td>
+                        </tr>
+
+                        <!-- ASO -->
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-6 font-semibold text-white align-top">App/Storefront Asset Optimization (ASO)</td>
+                            <td class="p-6 align-top">
+                                <ul class="list-disc list-inside space-y-2 marker:text-brand-pink">
+                                    <li>Poor visitors-to-player acquisition</li>
+                                </ul>
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Quantifying the subconscious impact of icons, screenshots, and descriptions using real or mock store pages.
+                            </td>
+                            <td class="p-6 align-top text-brand-light/70">
+                                Find the components within assets that resonate and drive higher install intent.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">
+                Frequently asked <span class="text-gradient">questions</span>
+            </h2>
+
+            <div class="space-y-4" x-data="{ activeAccordion: null }">
+                
+                <!-- FAQ Item 1 -->
+                <div class="glass-panel rounded-2xl overflow-hidden bg-white/5 transition-colors hover:bg-white/10">
+                    <button @click="activeAccordion = activeAccordion === 1 ? null : 1" class="flex items-center justify-between w-full p-6 text-left">
+                        <span class="font-medium text-white">How exactly are Study Minutes calculated?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-purple transition-transform duration-300" :class="activeAccordion === 1 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="activeAccordion === 1" x-collapse>
+                        <div class="px-6 pb-6 text-brand-light/70 text-sm leading-relaxed border-t border-white/5 pt-4">
+                            Study Minutes are calculated based on the actual duration of video or audio content processed by our AI models. For example, analyzing a 30-minute playtest session consumes 30 Study Minutes. Metadata and text-based analysis do not consume your minute allowance.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-panel rounded-2xl overflow-hidden bg-white/5 transition-colors hover:bg-white/10">
+                    <button @click="activeAccordion = activeAccordion === 2 ? null : 2" class="flex items-center justify-between w-full p-6 text-left">
+                        <span class="font-medium text-white">Do my Study Minutes expire?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-purple transition-transform duration-300" :class="activeAccordion === 2 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="activeAccordion === 2" x-collapse>
+                        <div class="px-6 pb-6 text-brand-light/70 text-sm leading-relaxed border-t border-white/5 pt-4">
+                            Yes, purchased Study Minutes are valid for 365 days from the date of purchase. This annual validity allows you to plan your research flexibly around your game development roadmap without pressure to use them immediately.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-panel rounded-2xl overflow-hidden bg-white/5 transition-colors hover:bg-white/10">
+                    <button @click="activeAccordion = activeAccordion === 3 ? null : 3" class="flex items-center justify-between w-full p-6 text-left">
+                        <span class="font-medium text-white">Can I upgrade my bundle later?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-purple transition-transform duration-300" :class="activeAccordion === 3 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="activeAccordion === 3" x-collapse>
+                        <div class="px-6 pb-6 text-brand-light/70 text-sm leading-relaxed border-t border-white/5 pt-4">
+                            Absolutely. You can purchase additional bundles at any time. If you find your studio needs have grown, contact our sales team to transition to a larger tier or Enterprise plan, and we can often carry over unused minutes to your new contract.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass-panel rounded-2xl overflow-hidden bg-white/5 transition-colors hover:bg-white/10">
+                    <button @click="activeAccordion = activeAccordion === 4 ? null : 4" class="flex items-center justify-between w-full p-6 text-left">
+                        <span class="font-medium text-white">Is respondent recruitment really included?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-purple transition-transform duration-300" :class="activeAccordion === 4 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="activeAccordion === 4" x-collapse>
+                        <div class="px-6 pb-6 text-brand-light/70 text-sm leading-relaxed border-t border-white/5 pt-4">
+                            Yes! All our bundles include standard respondent recruitment. We handle the sourcing and scheduling of players for your playtests and usability studies. For highly specialized demographic targeting, please contact sales as additional criteria may apply.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black/40 border-t border-white/5 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white text-xs font-bold">E</div>
+                    <span class="font-display font-bold text-lg text-white">Emhance AI</span>
+                </div>
+
+                <div class="flex gap-8 text-sm text-brand-light/60">
+                    <a href="#" class="hover:text-white transition-colors">Platform</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <div class="text-sm text-brand-light/40">
+                    © 2025 Emhance AI. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

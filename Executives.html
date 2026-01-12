@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emhance AI - For Executives</title>
+  <meta name="description" content="A persona page for studio executives. Improve decision quality and outcome predictability by linking player experience to early retention, revenue, and marketing efficiency—without operational drag." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0E1A2B',
+              darker: '#050a11',
+              purple: '#6B5AED',
+              pink: '#F36ED2',
+              green: '#86E27B',
+              surface: '#18233B',
+              light: '#C9D3FF'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          backgroundImage: {
+            'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(107, 90, 237, 0.25) 0%, rgba(14, 26, 43, 0) 70%)',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'scroll': 'scroll 40s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            scroll: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background-color: #0E1A2B; color: #F5F7FF; }
+
+    .glass-panel {
+      background: rgba(24, 35, 59, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(201, 211, 255, 0.1);
+    }
+
+    .text-gradient {
+      background: linear-gradient(to right, #F36ED2, #6B5AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-gradient-green {
+      background: linear-gradient(to right, #86E27B, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body class="antialiased overflow-x-hidden" x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+
+  <!-- NAV -->
+  <nav :class="{ 'bg-brand-dark/90 backdrop-blur-md border-b border-white/10': scrolled, 'bg-transparent': !scrolled }" class="fixed w-full z-50 transition-all duration-300 top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white font-bold">E</div>
+          <span class="font-display font-bold text-xl tracking-tight text-white">Emhance AI</span>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#overview" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Overview</a>
+          <a href="#value" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Value</a>
+          <a href="#use-cases" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Use Cases</a>
+          <a href="#demo" class="px-5 py-2.5 rounded-full bg-brand-purple hover:bg-brand-pink text-white text-sm font-semibold transition-all shadow-[0_0_15px_rgba(107,90,237,0.5)] hover:shadow-[0_0_25px_rgba(243,110,210,0.5)]">
+            Book a Demo
+          </a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white hover:text-brand-pink focus:outline-none">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-brand-darker border-b border-white/10 absolute w-full shadow-2xl">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#overview" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-pink" @click="mobileMenuOpen = false">Overview</a>
+        <a href="#value" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-pink" @click="mobileMenuOpen = false">Value</a>
+        <a href="#use-cases" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-pink" @click="mobileMenuOpen = false">Use Cases</a>
+        <a href="#demo" class="block px-3 py-2 mt-4 text-center rounded-md text-base font-bold bg-brand-purple text-white" @click="mobileMenuOpen = false">Book a Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+    <div class="absolute inset-0 bg-hero-glow"></div>
+    <div class="absolute inset-0 grid-bg opacity-30"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+
+        <div class="text-left mb-12 lg:mb-0">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
+            <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+            <span class="text-xs font-mono text-brand-green uppercase tracking-wide">For Executives</span>
+          </div>
+
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight leading-tight mb-6">
+            Better decisions, <br />
+            stronger <span class="text-gradient">outcomes.</span>
+          </h1>
+
+          <p class="mt-4 text-xl text-brand-light/80 max-w-2xl leading-relaxed">
+            Emhance AI links player experience to business outcomes using emotion intelligence so you can strengthen retention, conversion, and monetization.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-start items-center">
+            <a href="#demo" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-brand-dark font-bold hover:bg-brand-light transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transform hover:scale-105">
+              Book a Demo <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative animate-float">
+          <div class="absolute -inset-4 bg-brand-purple/30 rounded-full blur-3xl opacity-40"></div>
+
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-brand-darker">
+            <div class="bg-brand-surface border-b border-white/10 px-4 py-3 flex items-center gap-2">
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+              </div>
+              <div class="ml-4 px-3 py-1 bg-black/20 rounded text-[10px] text-white/30 font-mono w-full text-center">emhance_exec_decision_view_live.exe</div>
+            </div>
+
+            <div class="relative aspect-video bg-black">
+              <!-- Video Fallback to Image if video fails -->
+              <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop">
+                <source src="https://www.singular.net/wp-content/uploads/2025/11/Singular_AI_silent_small.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+
+              <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-2 py-1 rounded border border-brand-green/30 text-brand-green text-xs font-mono">
+                <span class="animate-pulse">●</span> RISK REVIEW
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 glass-panel rounded-xl p-4 border border-white/10">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <div class="text-xs font-mono text-brand-light/60 uppercase tracking-wider">Cohort leverage</div>
+                    <div class="mt-1 text-sm font-semibold text-white">Retention risk cluster in first session — confusion at 00:42 and 01:18</div>
+                    <div class="mt-1 text-xs text-brand-light/70">Decision: prioritise onboarding fixes before spend and scale</div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-xs font-mono text-brand-light/60">Expected impact</div>
+                    <div class="mt-1 text-sm font-bold"><span class="text-gradient-green">Earlier</span> payback</div>
+                    <div class="mt-1 text-xs text-brand-light/60">from retained cohorts</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO MARQUEE -->
+  <section class="border-y border-white/5 bg-black/20 overflow-hidden py-10">
+    <p class="text-center text-sm font-medium text-brand-light/40 mb-8 uppercase tracking-widest">Trusted by data-obsessed game teams</p>
+    <div class="relative w-full overflow-hidden">
+      <div class="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-brand-dark to-transparent z-10"></div>
+      <div class="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-brand-dark to-transparent z-10"></div>
+
+      <div class="inline-flex animate-scroll hover:[animation-play-state:paused] whitespace-nowrap">
+        <div class="flex items-center gap-16 mx-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-300">
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="ghost" class="w-5 h-5"></i> VOODOO</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5"></i> GOOGLE</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="monitor" class="w-5 h-5"></i> MYTONA</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="gamepad-2" class="w-5 h-5"></i> VIZOR</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="users" class="w-5 h-5"></i> NEXTERS</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="crosshair" class="w-5 h-5"></i> PIXONIC</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5"></i> SAYGAMES</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="swords" class="w-5 h-5"></i> WARGAMING</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="factory" class="w-5 h-5"></i> KOLIBRI</span>
+        </div>
+        <div class="flex items-center gap-16 mx-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-300">
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="ghost" class="w-5 h-5"></i> VOODOO</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5"></i> GOOGLE</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="monitor" class="w-5 h-5"></i> MYTONA</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="gamepad-2" class="w-5 h-5"></i> VIZOR</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="users" class="w-5 h-5"></i> NEXTERS</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="crosshair" class="w-5 h-5"></i> PIXONIC</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5"></i> SAYGAMES</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="swords" class="w-5 h-5"></i> WARGAMING</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="factory" class="w-5 h-5"></i> KOLIBRI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">
+          Early retention can be a <span class="text-brand-light/60">profit killer.</span><br />
+          Player experience is where it's <span class="text-gradient">won.</span>
+        </h2>
+        <p class="text-lg text-brand-light/70 max-w-3xl mx-auto">
+          Emhance AI reveals what drives early retention at the moment decisions are made, and turns that understanding into clearer, faster execution across the studio.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-pink/50">
+          <div class="w-12 h-12 bg-brand-pink/20 rounded-lg flex items-center justify-center mb-6">
+            <i data-lucide="alarm-triangle" class="w-6 h-6 text-brand-pink"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Surface retention risk earlier</h3>
+          <p class="text-brand-light/70 leading-relaxed">
+            Identify experience issues before they show up in KPIs, when fixes are cheaper and cohorts are not yet lost.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-purple/50">
+          <div class="w-12 h-12 bg-brand-purple/20 rounded-lg flex items-center justify-center mb-6">
+            <i data-lucide="route" class="w-6 h-6 text-brand-purple"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Improve decision predictability</h3>
+          <p class="text-brand-light/70 leading-relaxed">
+            Understand why retention, conversion, or CTR shifts, then make changes with clearer expected impact.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-green/50">
+          <div class="w-12 h-12 bg-brand-green/20 rounded-lg flex items-center justify-center mb-6">
+            <i data-lucide="layers" class="w-6 h-6 text-brand-green"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Align execution across teams</h3>
+          <p class="text-brand-light/70 leading-relaxed">
+            Give product, design, and marketing the same evidence tied to moments, not opinions, so decisions move faster.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12 glass-panel rounded-2xl p-8 border border-white/10">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+          <div class="max-w-3xl">
+            <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+              <i data-lucide="banknote" class="w-5 h-5 text-brand-green"></i> Why retention sits at the centre
+            </h3>
+            <p class="text-sm text-brand-light/75 leading-relaxed">
+              User acquisition cost arrives immediately. Revenue arrives later — if users return. Even small improvements in Day-1 and early-life retention preserve more value from the same media spend, shorten payback, raise LTV, and stabilise the foundations for monetization and scaling.
+            </p>
+          </div>
+          <div class="md:text-right">
+            <div class="text-xs font-mono text-brand-light/60 uppercase tracking-wider">Business lens</div>
+            <div class="mt-2 text-sm text-brand-light/80">
+              Retention → LTV → scale<br />
+              Conversion & monetization compound
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VALUE PILLARS -->
+  <section id="value" class="py-24 bg-brand-surface relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-dark/50 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div>
+          <span class="text-brand-green font-mono text-sm tracking-wider uppercase mb-2 block">Business value</span>
+          <h2 class="text-3xl md:text-5xl font-display font-bold">Decision-quality multiplier</h2>
+        </div>
+        <p class="text-brand-light/60 mt-4 md:mt-0 text-right max-w-md">
+          Executives care about predictable outcomes, faster decisions, less wasted spend, and stronger alignment — without adding operational drag.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white leading-tight">Connect experience to outcomes</h3>
+            <i data-lucide="link" class="text-brand-purple group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Emhance AI sits between live performance data and team intuition, explaining why metrics move, not only that they moved.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Efficiency</h3>
+            <i data-lucide="scissors" class="text-brand-green group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Reduce blind iteration in product and marketing. Use evidence earlier, and reserve spend for verification.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Speed</h3>
+            <i data-lucide="timer" class="text-brand-pink group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Replace circular debates with a shared view of what players experienced, tied to specific moments.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Compounding asset</h3>
+            <i data-lucide="database" class="text-blue-400 group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Build a reusable knowledge base that survives team changes and reduces relearning each cycle.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICAL EXEC USE CASES -->
+  <section id="use-cases" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div>
+          <span class="text-brand-green font-mono text-sm tracking-wider uppercase mb-2 block">Practical use cases</span>
+          <h2 class="text-3xl md:text-5xl font-display font-bold">Where you see leverage</h2>
+        </div>
+        <p class="text-brand-light/60 mt-4 md:mt-0 text-right max-w-md">
+          Translate player experience into business leverage: protect cohorts early, reduce wasted loops, and align teams on what to do next.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Retention & churn</h3>
+            <i data-lucide="life-buoy" class="text-brand-green group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Identify experience issues driving early-life churn and prioritise fixes with the highest expected cohort value impact.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Conversion</h3>
+            <i data-lucide="mouse-pointer-click" class="text-brand-purple group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Understand friction in onboarding and decision moments that shape completion, intent, and early re-engagement.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Monetization</h3>
+            <i data-lucide="shopping-bag" class="text-brand-pink group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Improve offer and shop moments by reducing friction and confusion while protecting engagement and retention.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Marketing efficiency</h3>
+            <i data-lucide="megaphone" class="text-blue-400 group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Learn what consistently captures attention, reduce creative waste and fatigue, and protect early cohorts.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-brand-purple/5"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 text-center">
+        
+        <div class="flex-1">
+          <div class="text-5xl md:text-6xl font-display font-bold text-white mb-2">30<span class="text-brand-pink">%</span></div>
+          <div class="text-brand-light/60 uppercase tracking-widest text-xs font-semibold">Min ad spend saving</div>
+        </div>
+
+        <div class="flex-1">
+          <div class="text-5xl md:text-6xl font-display font-bold text-white mb-2">8<span class="text-brand-green">%</span></div>
+          <div class="text-brand-light/60 uppercase tracking-widest text-xs font-semibold">Average increase in D1 retention</div>
+        </div>
+
+        <div class="flex-1 relative group">
+          <!-- Highlight for the Problem Stat -->
+          <div class="absolute -inset-6 bg-red-500/10 border border-red-500/30 rounded-2xl blur-sm group-hover:blur-md transition-all"></div>
+          <div class="relative px-6 py-4">
+            <div class="inline-block px-2 py-0.5 bg-red-500 text-[10px] font-bold text-white uppercase tracking-tighter rounded mb-2">The Critical Gap</div>
+            <div class="text-5xl md:text-6xl font-display font-bold text-red-400 mb-2">0.15<span class="text-red-500">%</span></div>
+            <div class="text-brand-light/80 uppercase tracking-tight text-xs font-bold max-w-[200px] mx-auto leading-tight">Number of players that ever become paying users</div>
+            <div class="mt-3 text-[10px] font-mono text-red-400/70 italic">Emhance unblocks this bottleneck</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="demo" class="py-24 relative overflow-hidden bg-gradient-to-br from-brand-surface to-brand-dark">
+    <div class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-brand-purple rounded-full blur-[120px] opacity-20"></div>
+    <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-brand-green rounded-full blur-[120px] opacity-10"></div>
+
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <div class="glass-panel rounded-3xl p-8 md:p-16 border border-white/10 shadow-2xl">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Ready to reduce retention risk earlier?</h2>
+          <p class="text-lg text-brand-light/80">
+            See how Emhance AI connects early-session experience to retention, revenue, and marketing efficiency — with minimal operational overhead.
+          </p>
+        </div>
+
+        <form class="max-w-md mx-auto space-y-4" onsubmit="event.preventDefault();">
+          <div>
+            <label class="block text-sm font-medium text-brand-light mb-1">Work Email</label>
+            <input type="email" placeholder="name@studio.com" class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-brand-light/30 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-brand-light mb-1">Studio / Company</label>
+            <input type="text" placeholder="Studio Name" class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-brand-light/30 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-brand-light mb-1">What decision is most urgent?</label>
+            <select class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all">
+              <option value="" selected>Choose one</option>
+              <option>Improve Day-1 / early retention</option>
+              <option>Reduce costly iteration loops</option>
+              <option>Align teams on priorities</option>
+              <option>Monetization moment optimisation</option>
+              <option>Marketing efficiency and creative waste</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <button class="w-full py-4 rounded-lg bg-gradient-to-r from-brand-purple to-brand-pink hover:from-brand-purple/90 hover:to-brand-pink/90 text-white font-bold text-lg shadow-lg hover:shadow-brand-purple/25 transition-all transform hover:-translate-y-1">
+            Request Demo
+          </button>
+
+          <p class="text-xs text-center text-brand-light/40 mt-4">
+            By clicking "Request Demo" you agree to our Terms. No credit card required.
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black/40 border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white text-xs font-bold">E</div>
+          <span class="font-display font-bold text-lg text-white">Emhance AI</span>
+        </div>
+
+        <div class="flex gap-8 text-sm text-brand-light/60">
+          <a href="#" class="hover:text-white transition-colors">Platform</a>
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Contact</a>
+        </div>
+
+        <div class="text-sm text-brand-light/40">© 2025 Emhance AI. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

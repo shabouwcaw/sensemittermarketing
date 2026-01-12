@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emhance AI - For Marketers</title>
+  <meta name="description" content="A persona page for UA, ASO, and creative teams. Learn faster and cheaper than live testing alone, and build a repeatable library of what captures attention and engagement." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0E1A2B',
+              darker: '#050a11',
+              purple: '#6B5AED',
+              pink: '#F36ED2',
+              green: '#86E27B',
+              surface: '#18233B',
+              light: '#C9D3FF'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          backgroundImage: {
+            'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(107, 90, 237, 0.25) 0%, rgba(14, 26, 43, 0) 70%)',
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'scroll': 'scroll 40s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            scroll: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background-color: #0E1A2B; color: #F5F7FF; }
+
+    .glass-panel {
+      background: rgba(24, 35, 59, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(201, 211, 255, 0.1);
+    }
+
+    .text-gradient {
+      background: linear-gradient(to right, #F36ED2, #6B5AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-gradient-green {
+      background: linear-gradient(to right, #86E27B, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+  </style>
+</head>
+
+<body class="antialiased overflow-x-hidden" x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+
+  <!-- NAV -->
+  <nav :class="{ 'bg-brand-dark/90 backdrop-blur-md border-b border-white/10': scrolled, 'bg-transparent': !scrolled }" class="fixed w-full z-50 transition-all duration-300 top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white font-bold">E</div>
+          <span class="font-display font-bold text-xl tracking-tight text-white">Emhance AI</span>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#overview" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Overview</a>
+          <a href="#marketing-work" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Use Cases</a>
+          <a href="#how-it-works" class="text-brand-light hover:text-white transition-colors text-sm font-medium">How it Works</a>
+          <a href="#comparison" class="text-brand-light hover:text-white transition-colors text-sm font-medium">Why Now</a>
+          <a href="#demo" class="px-5 py-2.5 rounded-full bg-brand-purple hover:bg-brand-pink text-white text-sm font-semibold transition-all shadow-[0_0_15px_rgba(107,90,237,0.5)] hover:shadow-[0_0_25px_rgba(243,110,210,0.5)]">
+            Book a Demo
+          </a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white hover:text-brand-pink focus:outline-none">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-brand-darker border-b border-white/10 absolute w-full shadow-2xl">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#overview" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-pink" @click="mobileMenuOpen = false">Overview</a>
+        <a href="#marketing-work" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-pink" @click="mobileMenuOpen = false">Use Cases</a>
+        <a href="#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-pink" @click="mobileMenuOpen = false">How it Works</a>
+        <a href="#demo" class="block px-3 py-2 mt-4 text-center rounded-md text-base font-bold bg-brand-purple text-white" @click="mobileMenuOpen = false">Book a Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+    <div class="absolute inset-0 bg-hero-glow"></div>
+    <div class="absolute inset-0 grid-bg opacity-30"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+
+        <div class="text-left mb-12 lg:mb-0">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
+            <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+            <span class="text-xs font-mono text-brand-green uppercase tracking-wide">For Marketers</span>
+          </div>
+
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight leading-tight mb-6">
+            Learn more, <br />
+            spend <span class="text-gradient">less.</span>
+          </h1>
+
+          <p class="mt-4 text-xl text-brand-light/80 max-w-2xl leading-relaxed">
+            There is a growing gap between how cheap it is to create variants and how expensive it is to test them. Emhance AI gives you the tools to make better choices.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-start items-center">
+            <a href="#demo" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-brand-dark font-bold hover:bg-brand-light transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transform hover:scale-105">
+              Book a Demo <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative animate-float">
+          <div class="absolute -inset-4 bg-brand-purple/30 rounded-full blur-3xl opacity-40"></div>
+
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-brand-darker">
+            <div class="bg-brand-surface border-b border-white/10 px-4 py-3 flex items-center gap-2">
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+              </div>
+              <div class="ml-4 px-3 py-1 bg-black/20 rounded text-[10px] text-white/30 font-mono w-full text-center">emhance_marketing_creative_live.exe</div>
+            </div>
+
+            <div class="relative aspect-video bg-black">
+              <!-- Using a static image placeholder for video to ensure stability if video fails -->
+              <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop">
+                <source src="https://www.singular.net/wp-content/uploads/2025/11/Singular_AI_silent_small.mp4" type="video/mp4" />
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Video placeholder">
+              </video>
+
+              <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-2 py-1 rounded border border-brand-green/30 text-brand-green text-xs font-mono">
+                <span class="animate-pulse">●</span> REVIEW LIVE
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 glass-panel rounded-xl p-4 border border-white/10">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <div class="text-xs font-mono text-brand-light/60 uppercase tracking-wider">Creative insight</div>
+                    <div class="mt-1 text-sm font-semibold text-white">Hook lands at 00:01, attention collapses at 00:06</div>
+                    <div class="mt-1 text-xs text-brand-light/70">Suggested iteration: shorten setup, move payoff earlier, tighten CTA framing</div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-xs font-mono text-brand-light/60">Pattern</div>
+                    <div class="mt-1 text-sm font-bold"><span class="text-gradient-green">Drop</span> after scene change</div>
+                    <div class="mt-1 text-xs text-brand-light/60">across variants</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO MARQUEE -->
+  <section class="border-y border-white/5 bg-black/20 overflow-hidden py-10">
+    <p class="text-center text-sm font-medium text-brand-light/40 mb-8 uppercase tracking-widest">Trusted by data-obsessed game teams</p>
+    <div class="relative w-full overflow-hidden">
+      <div class="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-brand-dark to-transparent z-10"></div>
+      <div class="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-brand-dark to-transparent z-10"></div>
+
+      <div class="inline-flex animate-scroll hover:[animation-play-state:paused] whitespace-nowrap">
+        <div class="flex items-center gap-16 mx-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-300">
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="ghost" class="w-5 h-5"></i> VOODOO</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5"></i> GOOGLE</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="monitor" class="w-5 h-5"></i> MYTONA</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="gamepad-2" class="w-5 h-5"></i> VIZOR</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="users" class="w-5 h-5"></i> NEXTERS</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="crosshair" class="w-5 h-5"></i> PIXONIC</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5"></i> SAYGAMES</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="swords" class="w-5 h-5"></i> WARGAMING</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="factory" class="w-5 h-5"></i> KOLIBRI</span>
+        </div>
+        <div class="flex items-center gap-16 mx-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-300">
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="ghost" class="w-5 h-5"></i> VOODOO</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5"></i> GOOGLE</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="monitor" class="w-5 h-5"></i> MYTONA</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="gamepad-2" class="w-5 h-5"></i> VIZOR</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="users" class="w-5 h-5"></i> NEXTERS</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="crosshair" class="w-5 h-5"></i> PIXONIC</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5"></i> SAYGAMES</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="swords" class="w-5 h-5"></i> WARGAMING</span>
+          <span class="font-display font-bold text-xl flex items-center gap-2"><i data-lucide="factory" class="w-5 h-5"></i> KOLIBRI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">
+          Traditional testing tells you <span class="text-brand-light/60">what happened.</span><br />
+          Emhance AI tells you <span class="text-gradient">why.</span>
+        </h2>
+        <p class="text-lg text-brand-light/70 max-w-3xl mx-auto">
+          Emhance AI helps you understand how ads and store assets are experienced so you can iterate with confidence and build knowledge that compounds over time.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-pink/50">
+          <div class="w-12 h-12 bg-brand-pink/20 rounded-lg flex items-center justify-center mb-6">
+            <i data-lucide="zap" class="w-6 h-6 text-brand-pink"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Experience insight, not just metrics</h3>
+          <p class="text-brand-light/70 leading-relaxed">
+            See which frames and seconds capture attention, which moments sustain engagement, and where viewers drop.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-purple/50">
+          <div class="w-12 h-12 bg-brand-purple/20 rounded-lg flex items-center justify-center mb-6">
+            <i data-lucide="layers" class="w-6 h-6 text-brand-purple"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Cumulative learning library</h3>
+          <p class="text-brand-light/70 leading-relaxed">
+            Compare patterns across formats and campaigns to build a durable library of hooks, structures, and moments that tend to work.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 border-t-2 border-t-brand-green/50">
+          <div class="w-12 h-12 bg-brand-green/20 rounded-lg flex items-center justify-center mb-6">
+            <i data-lucide="piggy-bank" class="w-6 h-6 text-brand-green"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">More efficient spend</h3>
+          <p class="text-brand-light/70 leading-relaxed">
+            Reduce dependence on large, high-volume tests for early learning. Reserve spend for ideas with clearer experiential signal.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MARKETING USE CASES -->
+  <section id="marketing-work" class="py-24 bg-brand-surface relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-dark/50 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div>
+          <span class="text-brand-green font-mono text-sm tracking-wider uppercase mb-2 block">Use cases</span>
+          <h2 class="text-3xl md:text-5xl font-display font-bold">What to test first</h2>
+        </div>
+        <p class="text-brand-light/60 mt-4 md:mt-0 text-right max-w-md">
+          Start where live tests are most expensive: early learning, hook discovery, and concept direction — then use spend for verification and scaling.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Hook strength</h3>
+            <i data-lucide="fish" class="text-brand-purple group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            See whether attention is captured in the opening seconds, and which visual idea actually earns the first look.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Pacing and structure</h3>
+            <i data-lucide="film" class="text-brand-pink group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Identify moments that sustain engagement versus moments that leak attention, then refine timing, payoffs, and sequencing.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Drop-off diagnosis</h3>
+            <i data-lucide="trending-down" class="text-brand-green group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Pinpoint the second where viewers disengage and tie it to the exact frame, scene change, or message shift.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Competitor benchmarks</h3>
+            <i data-lucide="swords" class="text-blue-400 group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Analyze competitor top performers to uncover the specific hooks, pacing, and structural patterns driving their success.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">ASO first-glance behaviour</h3>
+            <i data-lucide="store" class="text-brand-light group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Understand what is seen first on icons, screenshots, and trailers, and which patterns keep attention through the page.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors group border border-dashed border-white/20">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white">Pattern benchmarking</h3>
+            <i data-lucide="bar-chart-2" class="text-brand-light group-hover:scale-110 transition-transform"></i>
+          </div>
+          <p class="text-sm text-brand-light/70">
+            Compare multiple creatives across formats and campaigns to extract reusable patterns instead of one-off winners.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPARISON / WHY NOW -->
+  <section id="comparison" class="py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-display font-bold text-center mb-16">Why this matters now</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-white/10 rounded-2xl overflow-hidden">
+        <div class="bg-brand-surface/50 p-10 flex flex-col">
+          <h3 class="text-xl font-bold text-brand-light/50 mb-6 flex items-center gap-2">
+            <i data-lucide="x-circle" class="w-5 h-5"></i> Live testing alone
+          </h3>
+          <ul class="space-y-6 text-brand-light/50">
+            <li class="flex gap-3">
+              <i data-lucide="minus" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+              <span>High CPM/CPI makes significant tests expensive</span>
+            </li>
+            <li class="flex gap-3">
+              <i data-lucide="minus" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+              <span>Early metrics can be noisy, leading to false negatives</span>
+            </li>
+            <li class="flex gap-3">
+              <i data-lucide="minus" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+              <span>Privacy limits reduce visibility into down-funnel impact</span>
+            </li>
+            <li class="flex gap-3">
+              <i data-lucide="minus" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
+              <span>Explains outcomes, not why the asset worked</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-brand-surface p-10 relative">
+          <div class="absolute inset-0 bg-brand-purple/5"></div>
+          <div class="absolute top-0 right-0 w-20 h-20 bg-brand-purple/20 blur-xl"></div>
+
+          <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2 relative z-10">
+            <i data-lucide="check-circle" class="w-5 h-5 text-brand-green"></i> Emhance AI
+          </h3>
+          <ul class="space-y-6 relative z-10">
+            <li class="flex gap-3 text-white">
+              <i data-lucide="check" class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5"></i>
+              <span>Experience insight: what was seen, when interest rose, where it dropped</span>
+            </li>
+            <li class="flex gap-3 text-white">
+              <i data-lucide="check" class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5"></i>
+              <span>Find growth gems inside campaigns, by identifying engaging moments</span>
+            </li>
+            <li class="flex gap-3 text-white">
+              <i data-lucide="check" class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5"></i>
+              <span>Informed direction: improve iteration before spending for certainty</span>
+            </li>
+            <li class="flex gap-3 text-white">
+              <i data-lucide="check" class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5"></i>
+              <span>Shared evidence: align UA, creative, and ASO on what to explore next</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-10 glass-panel rounded-2xl p-8 border border-white/10">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+          <div class="max-w-2xl">
+            <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+              <i data-lucide="brackets" class="w-5 h-5 text-brand-purple"></i> Method framing (disciplined)
+            </h3>
+            <p class="text-sm text-brand-light/70 leading-relaxed">
+              Attention: gaze and blink dynamics indicate what is actually seen. Activation: facial expression intensity used as a proxy for emotional intensity. Timing: signals mapped second-by-second. Interpretation: used diagnostically, not as a verdict. Signals inform direction, not creative value judgements.
+            </p>
+          </div>
+          <div class="md:text-right">
+            <div class="text-xs font-mono text-brand-light/60 uppercase tracking-wider">Fits with your KPIs</div>
+            <div class="mt-2 text-sm text-brand-light/80">
+              Complements CTR, CVR, IPM, ROAS.<br />
+              Strengthens early iteration.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="py-24 bg-brand-darker relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-brand-purple font-mono text-sm tracking-wider uppercase mb-2 block">Workflow</span>
+        <h2 class="text-3xl md:text-5xl font-display font-bold">How it works for marketing teams</h2>
+        <p class="text-brand-light/70 mt-4 max-w-3xl mx-auto">
+          Use Emhance AI early to learn, iterate, and build reusable patterns. Use live tests to verify, price, and scale with confidence.
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div class="relative group">
+            <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-purple">
+              <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-purple rounded-full flex items-center justify-center font-bold text-white shadow-lg shadow-brand-purple/50">1</span>
+              <h3 class="text-xl font-bold mb-3">Choose assets to learn from</h3>
+              <p class="text-brand-light/70 text-sm">Ads, variations, and store page concepts. Start with the questions that drive iteration speed.</p>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-purple/80">
+              <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-surface border border-white/10 rounded-full flex items-center justify-center font-bold text-white">2</span>
+              <h3 class="text-xl font-bold mb-3">Run the tests</h3>
+              <p class="text-brand-light/70 text-sm">Viewers watch on real devices in realistic conditions, so attention patterns reflect actual behaviour.</p>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-purple/60">
+              <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-surface border border-white/10 rounded-full flex items-center justify-center font-bold text-white">3</span>
+              <h3 class="text-xl font-bold mb-3">Capture attention & activation</h3>
+              <p class="text-brand-light/70 text-sm">Camera-based signals recorded second-by-second alongside the creative timeline.</p>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-pink/60">
+              <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-surface border border-white/10 rounded-full flex items-center justify-center font-bold text-white">4</span>
+              <h3 class="text-xl font-bold mb-3">Decode experience patterns</h3>
+              <p class="text-brand-light/70 text-sm">Identify capture moments, sustained engagement, and drop-offs mapped to frames and seconds.</p>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-pink/80">
+              <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-surface border border-white/10 rounded-full flex items-center justify-center font-bold text-white">5</span>
+              <h3 class="text-xl font-bold mb-3">Iterate with direction</h3>
+              <p class="text-brand-light/70 text-sm">Refine hook, structure, pacing, and store page hierarchy based on what viewers actually experienced.</p>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <div class="glass-panel p-8 rounded-2xl h-full border-t-4 border-t-brand-pink">
+              <span class="absolute -top-4 -right-4 w-10 h-10 bg-brand-pink rounded-full flex items-center justify-center font-bold text-white shadow-lg shadow-brand-pink/50">6</span>
+              <h3 class="text-xl font-bold mb-3">Build a library</h3>
+              <p class="text-brand-light/70 text-sm">Store patterns by genre, format, and audience so learning carries forward instead of resetting every campaign.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-brand-purple/5"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-wrap justify-center gap-12 md:gap-24 text-center">
+        <div>
+          <div class="text-5xl md:text-6xl font-display font-bold text-white mb-2">421<span class="text-brand-pink">+</span></div>
+          <div class="text-brand-light/60 uppercase tracking-widest text-xs">Signals per second</div>
+        </div>
+        <div>
+          <div class="text-5xl md:text-6xl font-display font-bold text-white mb-2">8<span class="text-brand-green">%</span></div>
+          <div class="text-brand-light/60 uppercase tracking-widest text-xs">increase in average D1 retention</div>
+        </div>
+        <div>
+          <div class="text-5xl md:text-6xl font-display font-bold text-white mb-2">2<span class="text-brand-purple">x</span></div>
+          <div class="text-brand-light/60 uppercase tracking-widest text-xs">Faster iteration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="demo" class="py-24 relative overflow-hidden bg-gradient-to-br from-brand-surface to-brand-dark">
+    <div class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-brand-purple rounded-full blur-[120px] opacity-20"></div>
+    <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-brand-green rounded-full blur-[120px] opacity-10"></div>
+
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <div class="glass-panel rounded-3xl p-8 md:p-16 border border-white/10 shadow-2xl">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Ready to learn before you spend?</h2>
+          <p class="text-lg text-brand-light/80">
+            See how attention and engagement timelines can guide creative and ASO iteration, then make live tests more efficient.
+          </p>
+        </div>
+
+        <form class="max-w-md mx-auto space-y-4" onsubmit="event.preventDefault();">
+          <div>
+            <label class="block text-sm font-medium text-brand-light mb-1">Work Email</label>
+            <input type="email" placeholder="name@studio.com" class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-brand-light/30 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-brand-light mb-1">Studio / Company</label>
+            <input type="text" placeholder="Studio Name" class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white placeholder-brand-light/30 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-brand-light mb-1">What are you optimising right now?</label>
+            <select class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 text-white focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all">
+              <option value="" selected>Choose one</option>
+              <option>UA creative testing</option>
+              <option>Hook and structure iteration</option>
+              <option>Creative fatigue / refresh</option>
+              <option>ASO: icon / screenshots</option>
+              <option>ASO: trailer / preview video</option>
+              <option>Cross-team alignment</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <button class="w-full py-4 rounded-lg bg-gradient-to-r from-brand-purple to-brand-pink hover:from-brand-purple/90 hover:to-brand-pink/90 text-white font-bold text-lg shadow-lg hover:shadow-brand-purple/25 transition-all transform hover:-translate-y-1">
+            Request Demo
+          </button>
+
+          <p class="text-xs text-center text-brand-light/40 mt-4">
+            By clicking "Request Demo" you agree to our Terms. No credit card required.
+          </p>
+        </form>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="glass-panel rounded-2xl p-5 border border-white/10">
+            <div class="text-xs font-mono text-brand-light/60 uppercase tracking-wider">Complements</div>
+            <p class="text-sm text-brand-light/80 mt-1">
+              CTR, CVR, IPM, ROAS, creative testing and ASO workflows.
+            </p>
+          </div>
+          <div class="glass-panel rounded-2xl p-5 border border-white/10">
+            <div class="text-xs font-mono text-brand-light/60 uppercase tracking-wider">Keeps in place</div>
+            <p class="text-sm text-brand-light/80 mt-1">
+              Live A/B tests, media buying, and performance analytics for verification and scaling.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black/40 border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white text-xs font-bold">E</div>
+          <span class="font-display font-bold text-lg text-white">Emhance AI</span>
+        </div>
+
+        <div class="flex gap-8 text-sm text-brand-light/60">
+          <a href="#" class="hover:text-white transition-colors">Platform</a>
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Contact</a>
+        </div>
+
+        <div class="text-sm text-brand-light/40">© 2025 Emhance AI. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

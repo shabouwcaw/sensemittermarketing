@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emhance AI – Research</title>
+    <meta name="description" content="The research foundations behind Emhance AI: measuring engagement with activation, attention, and memory bias to improve game outcomes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0E1A2B',
+                            darker: '#050a11',
+                            purple: '#6B5AED',
+                            pink: '#F36ED2',
+                            green: '#86E27B',
+                            surface: '#F5F7FF',
+                            light: '#C9D3FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(107, 90, 237, 0.25) 0%, rgba(14, 26, 43, 0) 70%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0E1A2B;
+            color: #F5F7FF;
+        }
+        .glass-panel {
+            background: rgba(245, 247, 255, 0.06);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(201, 211, 255, 0.35);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #F36ED2, #6B5AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+<nav class="fixed w-full z-50 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center font-bold text-white">
+                    E
+                </div>
+                <span class="font-display font-bold text-xl">Emhance AI</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#" class="text-brand-light hover:text-white transition-colors">Products</a>
+                <a href="#" class="text-white font-medium">Research</a>
+                <a href="#" class="text-brand-light hover:text-white transition-colors">Developers</a>
+                <a href="#" class="text-brand-light hover:text-white transition-colors">Pricing</a>
+                <a href="#" class="px-5 py-2.5 rounded-full bg-brand-purple hover:bg-brand-pink transition-colors font-semibold text-white">Contact Sales</a>
+            </div>
+             <!-- Mobile Menu Button Placeholder -->
+             <div class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="relative pt-36 pb-20">
+    <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-display font-bold mb-6 leading-tight">
+            Researching how player emotion<br>
+            <span class="text-gradient">influences business results</span>
+        </h1>
+        <p class="text-xl text-brand-light/80 max-w-3xl mx-auto leading-relaxed">
+            Emhance AI measures engagement through attention and activation, then applies memory science to understand what players actually retain. We turn these signals into clear, practical decisions that improve conversion, retention, and overall player experience.
+        </p>
+    </div>
+</section>
+
+<!-- Stats Banner -->
+<section class="pb-16">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="glass-panel rounded-3xl p-8 border-white/5 bg-white/[0.03]">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="brain" class="w-5 h-5 text-brand-purple"></i>
+                        <span class="text-3xl font-display font-bold text-white">40k+ sessions</span>
+                    </div>
+                    <p class="text-sm text-brand-light/70">Proprietary neural net trained on thousands of session captures</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-start text-center md:text-left border-y md:border-y-0 md:border-x border-white/10 py-8 md:py-0 md:px-8">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="target" class="w-5 h-5 text-brand-pink"></i>
+                        <span class="text-3xl font-display font-bold text-white">91.67%</span>
+                    </div>
+                    <p class="text-sm text-brand-light/70">Accuracy on ADFES benchmark</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-start text-center md:text-left md:pl-8">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="users" class="w-5 h-5 text-brand-green"></i>
+                        <span class="text-3xl font-display font-bold text-white">5m players</span>
+                    </div>
+                    <p class="text-sm text-brand-light/70">Real sessions influenced to date by Emhance AI findings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pb-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-2xl font-display font-bold text-white/90 uppercase tracking-widest">What we study</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-display font-bold text-white">Activation</div>
+                <div class="text-brand-light/70 text-sm mt-2">expression intensity as a nervous system proxy</div>
+            </div>
+            <div>
+                <div class="text-4xl font-display font-bold text-white">Attention</div>
+                <div class="text-brand-light/70 text-sm mt-2">blink dynamics and visual focus signals</div>
+            </div>
+            <div>
+                <div class="text-4xl font-display font-bold text-white">Memory</div>
+                <div class="text-brand-light/70 text-sm mt-2">peak + ending moments shape recall</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pb-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-2xl font-display font-bold text-white/90">Engagement Classifications</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Column: Classification List -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-6 text-left">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-brand-purple shadow-[0_0_10px_rgba(107,90,237,0.5)]"></div>
+                        <div class="text-xl font-display font-bold text-white">Deep Focus</div>
+                    </div>
+                    <div class="text-brand-light/70 text-sm pl-6">High attention, stable activation</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-brand-pink shadow-[0_0_10px_rgba(243,110,210,0.5)]"></div>
+                        <div class="text-xl font-display font-bold text-white">Frustration</div>
+                    </div>
+                    <div class="text-brand-light/70 text-sm pl-6">High activation, negative valence</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-brand-green shadow-[0_0_10px_rgba(134,226,123,0.5)]"></div>
+                        <div class="text-xl font-display font-bold text-white">Delighted</div>
+                    </div>
+                    <div class="text-brand-light/70 text-sm pl-6">High activation, positive valence</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-brand-light shadow-[0_0_10px_rgba(201,211,255,0.5)]"></div>
+                        <div class="text-xl font-display font-bold text-white">Neutral</div>
+                    </div>
+                    <div class="text-brand-light/70 text-sm pl-6">Moderate attention, baseline activation</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-white/30"></div>
+                        <div class="text-xl font-display font-bold text-white">Unengaged</div>
+                    </div>
+                    <div class="text-brand-light/70 text-sm pl-6">Low attention, low activation</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
+                        <div class="text-xl font-display font-bold text-white">Angry</div>
+                    </div>
+                    <div class="text-brand-light/70 text-sm pl-6">Extreme activation, negative spike</div>
+                </div>
+            </div>
+
+            <!-- Right Column: Scatter Chart -->
+            <div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-square bg-brand-darker rounded-3xl border border-white/10 p-8 overflow-hidden group">
+                <!-- Grid Lines -->
+                <div class="absolute inset-0 grid grid-cols-4 grid-rows-4">
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-b border-white/5"></div>
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-b border-white/5"></div>
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-r border-b border-white/5"></div>
+                    <div class="border-b border-white/5"></div>
+                    <div class="border-r border-white/5"></div>
+                    <div class="border-r border-white/5"></div>
+                    <div class="border-r border-white/5"></div>
+                </div>
+                
+                <!-- Axis Labels -->
+                <div class="absolute left-4 bottom-1/2 -translate-y-1/2 -rotate-90 text-xs font-mono text-white/30 tracking-widest uppercase">Activation Intensity</div>
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs font-mono text-white/30 tracking-widest uppercase">Visual Attention</div>
+
+                <!-- Chart Content (SVG) -->
+                <svg viewBox="0 0 400 400" class="absolute inset-0 w-full h-full p-12">
+                    <!-- Unengaged Cluster (Low Act, Low Att) -->
+                    <g class="opacity-50">
+                        <circle cx="60" cy="340" r="4" fill="rgba(255,255,255,0.3)" />
+                        <circle cx="80" cy="320" r="3" fill="rgba(255,255,255,0.3)" />
+                        <circle cx="50" cy="310" r="5" fill="rgba(255,255,255,0.3)" />
+                        <circle cx="90" cy="350" r="2" fill="rgba(255,255,255,0.3)" />
+                    </g>
+
+                    <!-- Neutral Cluster (Mid Act, Mid Att) -->
+                    <g>
+                        <circle cx="150" cy="250" r="5" fill="#C9D3FF" class="animate-pulse" style="animation-duration: 4s"/>
+                        <circle cx="170" cy="230" r="3" fill="#C9D3FF" opacity="0.7"/>
+                        <circle cx="140" cy="260" r="4" fill="#C9D3FF" opacity="0.6"/>
+                    </g>
+
+                    <!-- Deep Focus (High Att, Mid-High Act) -->
+                    <g>
+                        <circle cx="320" cy="150" r="8" fill="#6B5AED" class="animate-pulse" style="animation-duration: 3s">
+                            <animate attributeName="r" values="8;9;8" dur="3s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="340" cy="130" r="4" fill="#6B5AED" opacity="0.6"/>
+                        <circle cx="300" cy="160" r="5" fill="#6B5AED" opacity="0.8"/>
+                        <circle cx="310" cy="120" r="3" fill="#6B5AED" opacity="0.5"/>
+                    </g>
+
+                    <!-- Delighted (High Att, High Act) -->
+                    <g>
+                        <circle cx="300" cy="80" r="7" fill="#86E27B"/>
+                        <circle cx="280" cy="60" r="4" fill="#86E27B" opacity="0.7"/>
+                        <circle cx="320" cy="70" r="5" fill="#86E27B" opacity="0.6"/>
+                    </g>
+
+                    <!-- Frustration (Mid Att, High Act) -->
+                    <g>
+                        <circle cx="180" cy="100" r="6" fill="#F36ED2" />
+                        <circle cx="160" cy="120" r="4" fill="#F36ED2" opacity="0.8"/>
+                        <circle cx="200" cy="90" r="3" fill="#F36ED2" opacity="0.6"/>
+                    </g>
+
+                    <!-- Angry (Low/Mid Att, Extreme Act) -->
+                    <g>
+                        <circle cx="100" cy="50" r="8" fill="#ef4444" />
+                        <circle cx="80" cy="60" r="4" fill="#ef4444" opacity="0.7"/>
+                        <circle cx="110" cy="40" r="5" fill="#ef4444" opacity="0.6"/>
+                    </g>
+                </svg>
+
+                <!-- Floating Labels (HTML overlay for better text rendering) -->
+                <div class="absolute top-[20%] right-[15%] text-brand-green font-bold text-xs bg-brand-darker/80 px-2 py-1 rounded backdrop-blur border border-brand-green/20">Delighted</div>
+                <div class="absolute top-[35%] right-[10%] text-brand-purple font-bold text-xs bg-brand-darker/80 px-2 py-1 rounded backdrop-blur border border-brand-purple/20">Deep Focus</div>
+                <div class="absolute top-[10%] left-[20%] text-red-500 font-bold text-xs bg-brand-darker/80 px-2 py-1 rounded backdrop-blur border border-red-500/20">Angry</div>
+                <div class="absolute top-[25%] left-[40%] text-brand-pink font-bold text-xs bg-brand-darker/80 px-2 py-1 rounded backdrop-blur border border-brand-pink/20">Frustration</div>
+                <div class="absolute bottom-[40%] left-[35%] text-brand-light font-bold text-xs bg-brand-darker/80 px-2 py-1 rounded backdrop-blur border border-brand-light/20">Neutral</div>
+                <div class="absolute bottom-[10%] left-[10%] text-white/50 font-bold text-xs bg-brand-darker/80 px-2 py-1 rounded backdrop-blur border border-white/10">Unengaged</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Research Methodology Section -->
+<section class="pb-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <!-- Executive Summary as Intro -->
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <span class="text-xs uppercase tracking-widest text-brand-purple font-bold mb-4 block">Executive Summary</span>
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-white">Objective engagement signals</h2>
+            <p class="text-lg text-brand-light/80 leading-relaxed">
+                Our goal is to assess engagement during playtests with objective, scalable measures. We track activation
+                proxies from facial coding and attention proxies from blink dynamics, then map these states over time
+                to identify the strongest and weakest moments in a session.
+            </p>
+        </div>
+
+        <!-- Research Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div class="glass-panel rounded-3xl p-8 flex flex-col items-center text-center hover:border-brand-purple/50 transition-colors duration-300">
+                <span class="text-xs uppercase tracking-wider text-brand-light mb-3 font-semibold">Activation Proxy</span>
+                <h3 class="text-xl font-display font-bold mb-4 text-white">Automated facial coding</h3>
+                <p class="text-sm text-brand-light/70 flex-1 leading-relaxed">
+                    We use automated face analysis to estimate expression intensity. Strong facial configurations are used
+                    as a proxy for autonomic activation, particularly when aligned with gameplay events. We treat this
+                    as an intensity signal, not a literal classification of what the player “feels.”
+                </p>
+            </div>
+
+            <div class="glass-panel rounded-3xl p-8 flex flex-col items-center text-center hover:border-brand-purple/50 transition-colors duration-300">
+                <span class="text-xs uppercase tracking-wider text-brand-light mb-3 font-semibold">Attention Proxy</span>
+                <h3 class="text-xl font-display font-bold mb-4 text-white">Blink dynamics</h3>
+                <p class="text-sm text-brand-light/70 flex-1 leading-relaxed">
+                    We track blink rate and blink-free intervals as indicators of visual attention allocation. In visually
+                    demanding moments, players often suppress blinking to avoid missing information. We interpret blinks in context rather than as a universal meter.
+                </p>
+            </div>
+
+            <div class="glass-panel rounded-3xl p-8 flex flex-col items-center text-center hover:border-brand-purple/50 transition-colors duration-300">
+                <span class="text-xs uppercase tracking-wider text-brand-light mb-3 font-semibold">Engagement States</span>
+                <h3 class="text-xl font-display font-bold mb-4 text-white">Engagement vs boredom risk</h3>
+                <p class="text-sm text-brand-light/70 flex-1 leading-relaxed">
+                    We define “engagement” when activation and attention are both elevated.
+                    “Boredom risk” is the opposite: low intensity and low attention. Intermediate combinations help diagnose frustration,
+                    confusion, calm focus, or learning.
+                </p>
+            </div>
+
+            <div class="glass-panel rounded-3xl p-8 flex flex-col items-center text-center hover:border-brand-purple/50 transition-colors duration-300">
+                <span class="text-xs uppercase tracking-wider text-brand-light mb-3 font-semibold">Memory Science</span>
+                <h3 class="text-xl font-display font-bold mb-4 text-white">Peak–end rule</h3>
+                <p class="text-sm text-brand-light/70 flex-1 leading-relaxed">
+                    We apply the peak–end rule: retrospective evaluations overweight the most intense moment and how the
+                    session ends. We use timelines to locate the peak and ensure the final moments support the desired impression.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="pb-24">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-4 text-white">Publications</h2>
+            <p class="text-brand-light/80 text-lg">Discover the research foundational to our products</p>
+        </div>
+
+        <div class="space-y-4">
+            <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.01388/full" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors duration-300 block">
+                <div class="font-medium text-white text-lg mb-1">Read My Face: Automatic Facial Coding Versus Psychophysiological Indicators of Emotional Valence and Arousal</div>
+                <div class="text-brand-light/60 text-sm">Höfling, T. T. A., et al. (2020) • <span class="text-brand-purple">Frontiers in Psychology</span></div>
+            </a>
+
+            <a href="https://www.sciencedirect.com/science/article/pii/S2405844022001141" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors duration-300 block">
+                <div class="font-medium text-white text-lg mb-1">Multiple levels of mental attentional demand modulate peak saccade velocity and blink rate</div>
+                <div class="text-brand-light/60 text-sm">Bachurina, V., & Arsalidou, M. (2022) • <span class="text-brand-purple">Heliyon</span></div>
+            </a>
+
+            <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.01272/full" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors duration-300 block">
+                <div class="font-medium text-white text-lg mb-1">All’s Bad That Ends Bad: There Is a Peak-End Memory Bias in Anxiety</div>
+                <div class="text-brand-light/60 text-sm">Müller, U. W. D., et al. (2019) • <span class="text-brand-purple">Frontiers in Psychology</span></div>
+            </a>
+
+            <a href="https://pubmed.ncbi.nlm.nih.gov/28352947/" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors duration-300 block">
+                <div class="font-medium text-white text-lg mb-1">The knowns and unknowns of boredom: a review of the literature</div>
+                <div class="text-brand-light/60 text-sm">Raffaelli, Q., et al. (2018) • <span class="text-brand-purple">Experimental Brain Research</span></div>
+            </a>
+
+            <a href="https://www.mdpi.com/2076-3417/9/18/3904" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors duration-300 block">
+                <div class="font-medium text-white text-lg mb-1">3D Approaches and Challenges in Facial Expression Recognition Algorithms—A Literature Review</div>
+                <div class="text-brand-light/60 text-sm">Nonis, F., et al. (2019) • <span class="text-brand-purple">Applied Sciences</span></div>
+            </a>
+
+            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4531837" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors duration-300 block">
+                <div class="font-medium text-white text-lg mb-1">On validating a generic camera-based blink detection system</div>
+                <div class="text-brand-light/60 text-sm">Biondi, F. N., et al. (2023) • <span class="text-brand-purple">ietresearch.onlinelibrary.wiley.com</span></div>
+            </a>
+
+            <a href="https://www.ius.uzh.ch/dam/jcr:9ac245ec-ce2c-46a6-a620-77bf34f05d61/Kahneman%20et%20al.%20When%20More%20Pain%20is%20Preferred%20to%20Less.pdf" target="_blank" rel="noopener noreferrer" class="glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors duration-300 block">
+                <div class="font-medium text-white text-lg mb-1">When More Pain Is Preferred to Less: Adding a Better End</div>
+                <div class="text-brand-light/60 text-sm">Kahneman et al. (1993) • <span class="text-brand-purple">Psychological Science</span></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="pb-24">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-white">
+            Research that ships into production
+        </h2>
+        <p class="text-brand-light/80 mb-10 text-lg">
+            Our methodology is designed for real development cycles: reliable enough to guide decisions, fast enough to
+            keep teams moving, and transparent about uncertainty. We focus on the moments that move KPIs, not just the
+            moments that look interesting in a chart.
+        </p>
+        <a href="#" class="inline-block px-8 py-4 rounded-full bg-brand-purple hover:bg-brand-pink transition-colors font-semibold text-white">
+            Get a demo
+        </a>
+    </div>
+</section>
+
+<footer class="border-t border-white/10 py-16 bg-brand-darker">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+        <div>
+            <div class="font-semibold mb-4 text-white">Products</div>
+            <ul class="space-y-2 text-brand-light/70">
+                <li><a href="#" class="hover:text-brand-light transition-colors">Playtesting</a></li>
+                <li><a href="#" class="hover:text-brand-light transition-colors">Creative Testing</a></li>
+                <li><a href="#" class="hover:text-brand-light transition-colors">ASO Optimization</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="font-semibold mb-4 text-white">Research</div>
+            <ul class="space-y-2 text-brand-light/70">
+                <li><a href="#" class="hover:text-brand-light transition-colors">Methodology</a></li>
+                <li><a href="#" class="hover:text-brand-light transition-colors">Publications</a></li>
+                <li><a href="#" class="hover:text-brand-light transition-colors">Blog</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="font-semibold mb-4 text-white">Company</div>
+            <ul class="space-y-2 text-brand-light/70">
+                <li><a href="#" class="hover:text-brand-light transition-colors">About</a></li>
+                <li><a href="#" class="hover:text-brand-light transition-colors">Careers</a></li>
+                <li><a href="#" class="hover:text-brand-light transition-colors">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="font-semibold mb-4 text-white">Legal</div>
+            <ul class="space-y-2 text-brand-light/70">
+                <li><a href="#" class="hover:text-brand-light transition-colors">Privacy Policy</a></li>
+                <li><a href="#" class="hover:text-brand-light transition-colors">Terms of Use</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="text-center text-xs text-brand-light/50 mt-12">
+        © 2026 Emhance AI. All rights reserved.
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
