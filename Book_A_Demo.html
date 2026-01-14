@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Demo - EmSight</title>
+    <meta name="description" content="Schedule a personalized demo of EmSight's emotion AI platform for gaming studios.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine JS -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Tailwind Config (Matching your Brand) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0E1A2B',
+                            darker: '#050a11',
+                            purple: '#6B5AED',
+                            pink: '#F36ED2',
+                            green: '#86E27B',
+                            surface: '#18233B',
+                            light: '#C9D3FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(107, 90, 237, 0.25) 0%, rgba(14, 26, 43, 0) 70%)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0E1A2B;
+            color: #F5F7FF;
+        }
+        
+        /* Glass Effect for the Form */
+        .glass-panel {
+            background: rgba(24, 35, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 211, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #F36ED2, #6B5AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #6B5AED;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(107, 90, 237, 0.1);
+        }
+
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Navigation (Simplified for Conversion) -->
+    <nav class="absolute w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="/" class="flex-shrink-0 flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                    <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white font-bold">
+                        S
+                    </div>
+                    <span class="font-display font-bold text-xl tracking-tight text-white">{sense}mitter</span>
+                </a>
+
+                <!-- Back to Site Link -->
+                <div class="hidden md:flex items-center">
+                    <a href="/" class="text-brand-light hover:text-white transition-colors text-sm font-medium flex items-center gap-2">
+                        Back to Website <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center relative pt-24 pb-12 lg:pt-0 lg:pb-0">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 bg-hero-glow"></div>
+        <div class="absolute inset-0 grid-bg opacity-30"></div>
+        
+        <!-- Decorative Orbs -->
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-purple rounded-full blur-[128px] opacity-10 animate-pulse-slow"></div>
+        <div class="absolute top-20 right-20 w-72 h-72 bg-brand-pink rounded-full blur-[100px] opacity-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                
+                <!-- Left Column: Copy -->
+                <div class="space-y-8 max-w-2xl">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-purple text-xs font-bold uppercase tracking-wider mb-6">
+                            <span class="w-2 h-2 rounded-full bg-brand-purple animate-pulse"></span>
+                            Accepting new studios
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-tight mb-6">
+                            See what your players <span class="text-gradient">really feel</span>.
+                        </h1>
+                        <p class="text-lg text-brand-light/80 leading-relaxed">
+                            Book a 30-minute demo with our product team. We'll show you how EmSight uses biometrics to uncover the "why" behind your retention rates.
+                        </p>
+                    </div>
+
+                    <!-- Value Points -->
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-green/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="check" class="w-3 h-3 text-brand-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">Reveal hidden friction</h3>
+                                <p class="text-sm text-brand-light/60">Identify frustration points that traditional analytics miss.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-green/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="check" class="w-3 h-3 text-brand-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">Optimize onboarding</h3>
+                                <p class="text-sm text-brand-light/60">Ensure your FTUE hooks players emotionally from second one.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-brand-green/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="check" class="w-3 h-3 text-brand-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">Creative testing</h3>
+                                <p class="text-sm text-brand-light/60">Validate ad creatives with real emotional response data.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Proof Mini -->
+                    <div class="pt-8 border-t border-white/5">
+                        <p class="text-xs text-brand-light/40 uppercase tracking-widest mb-4">Trusted by teams at</p>
+                        <div class="flex gap-6 opacity-50 grayscale">
+                            <div class="flex items-center gap-1"><i data-lucide="gamepad" class="w-4 h-4"></i><span class="font-display font-bold">VIZOR</span></div>
+                            <div class="flex items-center gap-1"><i data-lucide="bird" class="w-4 h-4"></i><span class="font-display font-bold">ROVIO</span></div>
+                            <div class="flex items-center gap-1"><i data-lucide="ghost" class="w-4 h-4"></i><span class="font-display font-bold">VOODOO</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Form -->
+                <div class="lg:pl-8">
+                    <div class="glass-panel p-6 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden group">
+                        <!-- Subtle Gradient Border Effect on Hover -->
+                        <div class="absolute inset-0 border-2 border-transparent hover:border-brand-purple/30 rounded-2xl transition-colors pointer-events-none z-20"></div>
+
+                        <form class="space-y-5 relative z-10" onsubmit="event.preventDefault(); alert('Thanks! We will be in touch shortly.');">
+                            <div class="grid grid-cols-2 gap-5">
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-brand-light ml-1">First Name</label>
+                                    <input type="text" class="input-field w-full px-4 py-3 rounded-xl focus:ring-0" placeholder="Jane" required>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-brand-light ml-1">Last Name</label>
+                                    <input type="text" class="input-field w-full px-4 py-3 rounded-xl focus:ring-0" placeholder="Doe" required>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-brand-light ml-1">Work Email</label>
+                                <input type="email" class="input-field w-full px-4 py-3 rounded-xl focus:ring-0" placeholder="jane@studio.com" required>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-brand-light ml-1">Company / Studio</label>
+                                <input type="text" class="input-field w-full px-4 py-3 rounded-xl focus:ring-0" placeholder="Awesome Games Inc." required>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-brand-light ml-1">Primary Goal</label>
+                                <select class="input-field w-full px-4 py-3 rounded-xl focus:ring-0 appearance-none cursor-pointer">
+                                    <option class="bg-brand-dark">Fixing Retention / Churn</option>
+                                    <option class="bg-brand-dark">Testing Ad Creatives</option>
+                                    <option class="bg-brand-dark">Onboarding Optimization</option>
+                                    <option class="bg-brand-dark">Just Curious</option>
+                                </select>
+                                <div class="absolute right-4 top-[42px] pointer-events-none text-brand-light/50">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-brand-light ml-1">Anything else?</label>
+                                <textarea class="input-field w-full px-4 py-3 rounded-xl focus:ring-0 min-h-[100px] resize-none" placeholder="Tell us about your current project..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-purple to-brand-pink text-white font-bold text-lg hover:shadow-[0_0_20px_rgba(243,110,210,0.4)] transition-all transform hover:scale-[1.02] active:scale-[0.98]">
+                                Schedule Demo
+                            </button>
+
+                            <p class="text-center text-xs text-brand-light/40 mt-4">
+                                By booking a demo, you agree to our <a href="#" class="underline hover:text-white">Terms</a> and <a href="#" class="underline hover:text-white">Privacy Policy</a>.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="border-t border-white/5 py-8 bg-black/20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-brand-light/30">© 2025 Sensemitter. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
