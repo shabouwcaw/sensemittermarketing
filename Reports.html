@@ -1,250 +1,272 @@
 <!DOCTYPE html>
-<html lang="en-US" style="--vw-100: 100vw; --vw: 1vw;">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ebook Library - Sensemitter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebook Library - Sensemitter</title>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope:200,300,500,600,700,800,regular">
-<style>
-    /* CORE FONTS */
-    @font-face{font-family:Inter;font-style:normal;font-weight:300 900;src:url('https://sensemitter.com/wp-content/themes/oxygen-is-not-a-theme/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');}
-    @font-face{font-family:Cardo;font-style:normal;font-weight:400;src:url('https://sensemitter.com/wp-content/themes/oxygen-is-not-a-theme/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
-    @font-face{font-family:Cardo;font-style:normal;font-weight:700;src:url('https://sensemitter.com/wp-content/themes/oxygen-is-not-a-theme/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    /* OXYGEN BUILDER & THEME STYLES (Retained from your source) */
-    :root{--wp--preset--color--vivid-purple: #9b51e0;--wp-block-synced-color:#7a00df;}
-    body { font-family: 'Inter', sans-serif; margin: 0; color: #1A191A; background-color: #fff; }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    
-    /* Layout Helpers */
-    .ct-section { width: 100%; display: flex; flex-direction: column; align-items: center; }
-    .ct-section-inner-wrap { width: 100%; max-width: 1120px; padding: 20px; display: flex; flex-direction: column; }
-    .section-py-0 { padding-top: 0; padding-bottom: 0; }
-    .spacing-lg { margin-top: 60px; margin-bottom: 60px; }
-    .spacing-md { margin-bottom: 30px; }
-    
-    /* Header Styling */
-    #header { border-bottom: 1px solid #eee; padding: 15px 0; }
-    .nav-items { display: flex; align-items: center; justify-content: flex-end; width: 100%; gap: 20px; }
-    .menu-primary-container ul { list-style: none; display: flex; gap: 30px; padding: 0; margin: 0; }
-    .menu-item-title { font-weight: 600; font-size: 15px; }
-    
-    /* Grid Styling (The Core Ebook Look) */
-    .cs-post-feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; width: 100%; margin-top: 40px; }
-    article.reports { display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #f0f0f0; }
-    article.reports:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-    
-    .pic { width: 100%; padding-top: 60%; position: relative; overflow: hidden; }
-    .featured-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.5s ease; }
-    article.reports:hover .featured-image { transform: scale(1.05); }
-    
-    .data { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; background: #fff; }
-    .entry-title { font-family: 'Cardo', serif; font-size: 22px; margin: 0 0 15px 0; line-height: 1.3; color: #1A191A; }
-    .entry-desc { font-size: 15px; color: #666; margin-bottom: 20px; line-height: 1.5; }
-    
-    /* Buttons */
-    .btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; padding: 10px 20px; border-radius: 5px; transition: all 0.3s; }
-    .btn-link { padding: 0; color: #933AE6; justify-content: flex-start; gap: 8px; }
-    .btn-link:hover { color: #7a00df; gap: 12px; }
-    .btn-black { background: #1A191A; color: #fff; border-radius: 50px; padding: 12px 24px; font-size: 14px; }
-    .btn-black:hover { background: #933AE6; color: #fff; }
-    
-    /* Footer & Hero Text */
-    .page-title-block { text-align: center; margin: 60px 0 20px; }
-    .page-title-h1 { font-family: 'Cardo', serif; font-size: 42px; margin-bottom: 15px; }
-    .page-subtitle { font-size: 18px; color: #666; max-width: 600px; margin: 0 auto; }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    /* Icons */
-    .icon svg { width: 100%; height: 100%; }
-    .icon-14 { width: 14px; height: 14px; }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0E1A2B',
+                            darker: '#050a11',
+                            purple: '#6B5AED',
+                            pink: '#F36ED2',
+                            green: '#86E27B',
+                            surface: '#F5F7FF',
+                            light: '#C9D3FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(107, 90, 237, 0.25) 0%, rgba(14, 26, 43, 0) 70%)',
+                    }
+                }
+            }
+        }
+    </script>
 
-    /* Footer structure simplified */
-    #footer { background: #1A191A; color: #fff; padding: 60px 0; margin-top: 80px; }
-    #footer svg { height: 30px; width: auto; }
-    .footer-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
-</style>
+    <style>
+        body {
+            background-color: #0E1A2B;
+            color: #F5F7FF;
+        }
+        .glass-panel {
+            background: rgba(245, 247, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 211, 255, 0.1);
+        }
+        .glass-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .glass-input:focus {
+            border-color: #6B5AED;
+            outline: none;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #F36ED2, #6B5AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom hover effect for cards */
+        .hover-card:hover {
+            border-color: rgba(107, 90, 237, 0.5);
+            transform: translateY(-4px);
+            background: rgba(245, 247, 255, 0.06);
+        }
+    </style>
 </head>
 
-<body class="archive post-type-archive post-type-archive-reports oxygen-body">
+<body class="antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-<section id="header" class="ct-section page-header">
-    <div class="ct-section-inner-wrap">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="/" title="Home" style="width: 200px;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 269 40">
-                    <path fill="#933AE6" d="M14.96 4.91V0H9.39... (Original Logo Path)"></path>
-                    <text x="0" y="30" fill="#1A191A" font-family="Cardo" font-size="28" font-weight="bold">Sensemitter</text>
+<nav class="fixed w-full z-50 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-20">
+            <a href="/" class="flex items-center gap-2 group text-white fill-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 269 40" class="h-8 w-auto fill-current">
+                   <path d="M14.96 4.91V0H9.39c-.5 0-1.07.13-1.71.4-.62.23-1.2.6-1.76 1.1A6.04 6.04 0 0 0 4 5.91v8.25a3.7 3.7 0 0 1-1.49 3.11 4.42 4.42 0 0 1-2.5.83v3.82c.32 0 .72.07 1.18.22a3.96 3.96 0 0 1 2.37 1.71c.3.47.44 1.04.44 1.71v8.5a6.04 6.04 0 0 0 1.93 4.43c.56.5 1.14.87 1.76 1.1.64.27 1.2.4 1.7.4h5.58v-4.91H12.6c-.53 0-.95-.1-1.27-.3-.3-.21-.53-.48-.7-.8-.18-.3-.3-.63-.36-1-.03-.39-.04-.74-.04-1.06V24.9c0-.93-.18-1.7-.53-2.28a4.21 4.21 0 0 0-1.18-1.45c-.44-.38-.9-.64-1.4-.79-.5-.17-.91-.27-1.23-.3v-.13a6.7 6.7 0 0 0 1.23-.27A4.08 4.08 0 0 0 9.7 17.4c.35-.67.53-1.55.53-2.63V8.11c0-.35.01-.71.04-1.1a2.75 2.75 0 0 1 1.06-1.8c.32-.2.74-.3 1.27-.3h2.37Zm6.31 19.79h-5.92a7.9 7.9 0 0 0 1.01 3.8c.64 1 1.45 1.8 2.41 2.42 1 .62 2.12 1.05 3.38 1.32a18.79 18.79 0 0 0 7.63 0 9.31 9.31 0 0 0 3.33-1.28 7.06 7.06 0 0 0 2.33-2.4 7.3 7.3 0 0 0 .92-3.78 5.16 5.16 0 0 0-2.24-4.43 7.8 7.8 0 0 0-2.32-1.18c-.85-.3-1.73-.54-2.63-.75-.88-.2-1.74-.4-2.6-.57-.84-.17-1.6-.36-2.27-.57a5.06 5.06 0 0 1-1.58-.88 1.7 1.7 0 0 1-.61-1.36c0-.46.11-.83.35-1.1.23-.29.5-.5.83-.65.35-.15.73-.23 1.14-.26a8 8 0 0 1 1.14-.1c1.11 0 2.08.23 2.9.67.81.4 1.27 1.21 1.35 2.4h5.93a7.14 7.14 0 0 0-3.34-5.7 9.45 9.45 0 0 0-3.11-1.18 18.3 18.3 0 0 0-7.15 0 9.3 9.3 0 0 0-3.16 1.14 6.3 6.3 0 0 0-2.28 2.2 6.97 6.97 0 0 0-.83 3.6c0 .99.2 1.83.61 2.54.41.67.95 1.24 1.62 1.7.68.45 1.44.81 2.29 1.1.87.27 1.76.5 2.67.7 2.22.47 3.95.94 5.18 1.4 1.25.48 1.88 1.18 1.88 2.11a2.4 2.4 0 0 1-.4 1.4c-.26.36-.6.65-1 .88a5.35 5.35 0 0 1-2.68.62c-.61 0-1.21-.07-1.8-.22a4.93 4.93 0 0 1-1.49-.66c-.44-.32-.8-.71-1.1-1.18a3.7 3.7 0 0 1-.39-1.76Zm33.13-6.41H44.25a5.14 5.14 0 0 1 1.1-3.07c.4-.5.93-.9 1.57-1.23a5.4 5.4 0 0 1 2.5-.53c1.53 0 2.65.41 3.38 1.23a7.08 7.08 0 0 1 1.58 3.6Zm-10.14 3.95h16.36c.12-1.76-.03-3.44-.44-5.05a12 12 0 0 0-2.02-4.3 9.67 9.67 0 0 0-3.5-2.98 10.61 10.61 0 0 0-5.05-1.14 11.05 11.05 0 0 0-10.75 7.24 13.22 13.22 0 0 0-.83 4.74c0 1.75.26 3.36.8 4.82a11.23 11.23 0 0 0 2.32 3.77c.99 1.05 2.2 1.87 3.64 2.46 1.43.55 3.04.83 4.82.83 2.57 0 4.77-.58 6.58-1.75 1.81-1.17 3.16-3.12 4.03-5.84h-5.48a4 4 0 0 1-1.66 2.02c-.91.62-2 .92-3.25.92-1.75 0-3.1-.45-4.04-1.36-.93-.9-1.44-2.37-1.53-4.38ZM63.44 9.39v22.67h6.22V20.18c0-2.31.38-3.97 1.14-4.96.76-1.02 2-1.54 3.69-1.54 1.49 0 2.53.47 3.11 1.4.59.91.88 2.3.88 4.17v12.81h6.23V18.11a17 17 0 0 0-.4-3.81 6.92 6.92 0 0 0-1.27-2.94 5.83 5.83 0 0 0-2.54-1.89c-1.06-.46-2.42-.7-4.08-.7-1.32 0-2.6.3-3.86.92a7 7 0 0 0-3.07 2.85h-.13V9.4h-5.92ZM93.38 24.7h-5.92a7.9 7.9 0 0 0 1.01 3.8c.64 1 1.45 1.8 2.41 2.42 1 .62 2.12 1.05 3.38 1.32a18.79 18.79 0 0 0 7.63 0 9.32 9.32 0 0 0 3.33-1.28 7.06 7.06 0 0 0 2.33-2.4 7.3 7.3 0 0 0 .92-3.78 5.16 5.16 0 0 0-2.24-4.43 8.3 8.3 0 0 0-2.32-1.18 24.9 24.9 0 0 0-2.63-.75c-.88-.2-1.74-.4-2.6-.57-.84-.17-1.6-.36-2.27-.57a5.06 5.06 0 0 1-1.58-.88 1.7 1.7 0 0 1-.61-1.36c0-.46.11-.83.35-1.1.23-.29.5-.5.83-.65.35-.15.73-.23 1.14-.26.4-.06.79-.1 1.14-.1 1.11 0 2.08.23 2.9.67.81.4 1.27 1.21 1.36 2.4h5.92a7.14 7.14 0 0 0-3.34-5.7 9.44 9.44 0 0 0-3.11-1.18 18.3 18.3 0 0 0-7.15 0 9.3 9.3 0 0 0-3.16 1.14 6.3 6.3 0 0 0-2.28 2.2 6.97 6.97 0 0 0-.83 3.6c0 .99.2 1.83.61 2.54.41.67.95 1.24 1.62 1.7.68.45 1.44.81 2.28 1.1.88.27 1.77.5 2.68.7 2.22.47 3.95.94 5.18 1.4 1.25.48 1.88 1.18 1.88 2.11a2.4 2.4 0 0 1-.4 1.4c-.26.36-.6.65-1 .88a5.36 5.36 0 0 1-2.68.62c-.61 0-1.21-.07-1.8-.22a4.93 4.93 0 0 1-1.49-.66c-.44-.32-.8-.71-1.1-1.18a3.7 3.7 0 0 1-.39-1.76Zm33.12-6.41h-10.13a5.16 5.16 0 0 1 1.1-3.07c.4-.5.93-.9 1.58-1.23.67-.35 1.5-.53 2.5-.53 1.52 0 2.64.41 3.37 1.23a7.09 7.09 0 0 1 1.58 3.6Zm-10.13 3.95h16.36c.12-1.76-.03-3.44-.44-5.05a12 12 0 0 0-2.02-4.3 9.67 9.67 0 0 0-3.5-2.98 10.61 10.61 0 0 0-5.05-1.14 11.05 11.05 0 0 0-10.75 7.24 13.24 13.24 0 0 0-.83 4.74c0 1.75.26 3.36.8 4.82a11.22 11.22 0 0 0 2.31 3.77 10.4 10.4 0 0 0 3.65 2.46c1.43.55 3.04.83 4.82.83 2.57 0 4.77-.58 6.58-1.75 1.81-1.17 3.16-3.12 4.03-5.84h-5.48a4 4 0 0 1-1.66 2.02c-.91.62-2 .92-3.25.92-1.75 0-3.1-.45-4.04-1.36-.93-.9-1.44-2.37-1.53-4.38Zm16.81 12.85V40h5.57c.5 0 1.05-.13 1.66-.4.65-.23 1.23-.6 1.76-1.1a5.69 5.69 0 0 0 1.97-4.42v-8.51a3.2 3.2 0 0 1 1.49-2.81c.41-.29.85-.5 1.32-.61a4.2 4.2 0 0 1 1.23-.22v-3.82a5 5 0 0 1-1.23-.17c-.47-.15-.9-.37-1.32-.66a3.82 3.82 0 0 1-1.5-3.11V5.92a5.69 5.69 0 0 0-1.97-4.43 5.05 5.05 0 0 0-1.75-1.1 4.29 4.29 0 0 0-1.66-.39h-5.57v4.91h2.37a2.12 2.12 0 0 1 1.97 1.1c.17.3.28.63.3 1 .06.39.1.75.1 1.1v6.67c0 1.08.16 1.96.48 2.63.35.65.74 1.16 1.18 1.54.47.35.95.6 1.45.74.5.15.9.24 1.23.27v.13a5.52 5.52 0 0 0-2.68 1.1 5 5 0 0 0-1.18 1.44 4.72 4.72 0 0 0-.49 2.28v7.02c0 .32-.03.67-.08 1.05-.03.38-.14.72-.31 1.01a2.12 2.12 0 0 1-1.97 1.1h-2.37Z" />
                 </svg>
+                <span class="font-display font-bold text-xl tracking-tight">Sensemitter</span>
             </a>
 
-            <div class="nav-items hidden-mobile">
-                <div class="menu-primary-container">
-                    <ul id="menu-primary" class="menu">
-                        <li class="menu-item"><a href="https://sensemitter.com/playtesting/">Services</a></li>
-                        <li class="menu-item"><a href="https://sensemitter.com/use-cases/">Use Cases</a></li>
-                        <li class="menu-item current-menu-item"><a href="#" style="color:#933AE6;">Resources</a></li>
-                        <li class="menu-item"><a href="https://sensemitter.com/company/">Company</a></li>
-                    </ul>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="https://sensemitter.com/playtesting/" class="text-brand-light hover:text-white transition-colors">Services</a>
+                <a href="https://sensemitter.com/use-cases/" class="text-brand-light hover:text-white transition-colors">Use Cases</a>
+                <a href="#" class="text-white font-medium border-b-2 border-brand-purple pb-0.5">Resources</a>
+                <a href="https://sensemitter.com/company/" class="text-brand-light hover:text-white transition-colors">Company</a>
+                <a href="#demo" class="px-5 py-2.5 rounded-full bg-brand-purple hover:bg-brand-pink transition-colors font-semibold text-white shadow-[0_0_15px_rgba(107,90,237,0.4)]">
+                    Request Demo
+                </a>
+            </div>
+
+            <div class="md:hidden text-white cursor-pointer">
+                <i data-lucide="menu"></i>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="relative pt-36 pb-20">
+    <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-6xl font-display font-bold mb-6 leading-tight">
+            Knowledge <span class="text-gradient">Library</span>
+        </h1>
+        <p class="text-xl text-brand-light/80 max-w-2xl mx-auto leading-relaxed">
+            Download our latest eBooks, whitepapers, and guides to master game development and monetization.
+        </p>
+    </div>
+</section>
+
+<section class="pb-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-[4/3] w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/11/ftue-landing-pagehero-1.png" alt="FTUE Guide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <a class="btn btn-black" href="#demo">Request Demo</a>
-            </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        The Ultimate Guide to FTUE Monetization
+                    </h3>
+                    <p class="text-sm text-brand-light/70 mb-6 leading-relaxed">
+                        Learn how to optimize your First Time User Experience to boost retention and revenue using psychological triggers.
+                    </p>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Download Ebook <i data-lucide="download" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-[4/3] w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/09/1-1.webp" alt="Emotion AI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        Emotion AI: The Future of Playtesting
+                    </h3>
+                    <p class="text-sm text-brand-light/70 mb-6 leading-relaxed">
+                        Discover how analyzing player emotions via facial coding can predict game success before launch.
+                    </p>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Download Ebook <i data-lucide="download" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-[4/3] w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/04/cg-report-s1.png" alt="ASO Strategies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        ASO Strategies: Converting Visitors to Players
+                    </h3>
+                    <p class="text-sm text-brand-light/70 mb-6 leading-relaxed">
+                        A deep dive into store page assets, AB testing, and how they influence conversion rates.
+                    </p>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Download Ebook <i data-lucide="download" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-[4/3] w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2024/11/rm-report-s1-.webp" alt="Puzzle Mechanics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        Deconstructing Puzzle Game Mechanics
+                    </h3>
+                    <p class="text-sm text-brand-light/70 mb-6 leading-relaxed">
+                        Analysis of top-performing puzzle games and what makes them sticky in a crowded market.
+                    </p>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Download Ebook <i data-lucide="download" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
         </div>
     </div>
 </section>
 
-<section class="ct-section">
-    <div class="ct-section-inner-wrap">
-        <div class="page-title-block">
-            <h1 class="page-title-h1">Knowledge Library</h1>
-            <p class="page-subtitle">Download our latest eBooks, whitepapers, and guides to master game development and monetization.</p>
-        </div>
-    </div>
-</section>
-
-<section id="section-ebooks" class="ct-section cs-section">
-    <div class="ct-section-inner-wrap">
-        <div class="ct-code-block cs-post-feed reports-post-feed">
+<section id="demo" class="pb-24">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="glass-panel rounded-3xl p-8 md:p-12 border-white/5 bg-gradient-to-b from-brand-dark to-brand-darker relative overflow-hidden text-center">
             
-            <article class="reports type-reports status-publish has-post-thumbnail">
-                <a href="#">
-                    <div class="pic">
-                        <div class="featured-image" style="background-image: url(https://sensemitter.com/wp-content/uploads/2025/11/ftue-landing-pagehero-1.png)"></div>
-                    </div>
-                    <div class="data spacing-sm">
-                        <div class="first spacing-sm">
-                            <h2 class="entry-title">The Ultimate Guide to FTUE Monetization</h2>
-                            <p class="entry-desc">Learn how to optimize your First Time User Experience to boost retention and revenue.</p>
-                        </div>
-                        <div class="second">
-                            <div class="read-more btn btn-link">
-                                <div class="cta">Download Ebook</div>
-                                <div class="icon icon-14">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 11"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.5h10.37m0 0-4.46-4m4.46 4-4.46 4"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-
-            <article class="reports type-reports status-publish has-post-thumbnail">
-                <a href="#">
-                    <div class="pic">
-                        <div class="featured-image" style="background-image: url(https://sensemitter.com/wp-content/uploads/2025/09/1-1.webp)"></div>
-                    </div>
-                    <div class="data spacing-sm">
-                        <div class="first spacing-sm">
-                            <h2 class="entry-title">Emotion AI: The Future of Playtesting</h2>
-                            <p class="entry-desc">Discover how analyzing player emotions can predict game success before launch.</p>
-                        </div>
-                        <div class="second">
-                            <div class="read-more btn btn-link">
-                                <div class="cta">Download Ebook</div>
-                                <div class="icon icon-14">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 11"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.5h10.37m0 0-4.46-4m4.46 4-4.46 4"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-
-            <article class="reports type-reports status-publish has-post-thumbnail">
-                <a href="#">
-                    <div class="pic">
-                        <div class="featured-image" style="background-image: url(https://sensemitter.com/wp-content/uploads/2025/04/cg-report-s1.png)"></div>
-                    </div>
-                    <div class="data spacing-sm">
-                        <div class="first spacing-sm">
-                            <h2 class="entry-title">ASO Strategies: Converting Visitors to Players</h2>
-                            <p class="entry-desc">A deep dive into store page assets and how they influence conversion rates.</p>
-                        </div>
-                        <div class="second">
-                            <div class="read-more btn btn-link">
-                                <div class="cta">Download Ebook</div>
-                                <div class="icon icon-14">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 11"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.5h10.37m0 0-4.46-4m4.46 4-4.46 4"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-
-             <article class="reports type-reports status-publish has-post-thumbnail">
-                <a href="#">
-                    <div class="pic">
-                        <div class="featured-image" style="background-image: url(https://sensemitter.com/wp-content/uploads/2024/11/rm-report-s1-.webp)"></div>
-                    </div>
-                    <div class="data spacing-sm">
-                        <div class="first spacing-sm">
-                            <h2 class="entry-title">Deconstructing Puzzle Game Mechanics</h2>
-                            <p class="entry-desc">Analysis of top-performing puzzle games and what makes them sticky.</p>
-                        </div>
-                        <div class="second">
-                            <div class="read-more btn btn-link">
-                                <div class="cta">Download Ebook</div>
-                                <div class="icon icon-14">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 11"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.5h10.37m0 0-4.46-4m4.46 4-4.46 4"></path></svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-
-        </div>
-    </div>
-</section>
-
-<section id="demo" class="ct-section spacing-lg">
-    <div class="ct-section-inner-wrap" style="text-align: center; max-width: 600px;">
-        <div class="submit-form-title spacing-md">
-            <h2 class="ct-headline" style="font-family: 'Cardo', serif; font-size: 36px; margin-bottom: 10px;">Get Full Access</h2>
-            <div class="ct-text-block lead" style="color: #666; font-size: 18px;">Subscribe to our newsletter to get new ebooks delivered to your inbox.</div>
-        </div>
-        <div style="background: #f9f9f9; padding: 30px; border-radius: 8px; border: 1px solid #eee;">
-            <p style="color:#999; font-size: 14px;">[HubSpot Form Embed would go here]</p>
-            <div style="margin-top:20px;">
-                <input type="email" placeholder="Business email" style="padding: 12px; width: 60%; border: 1px solid #ccc; border-radius: 4px;">
-                <button class="btn btn-black" style="border-radius: 4px;">Subscribe</button>
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4 text-white">
+                    Get <span class="text-gradient">Full Access</span>
+                </h2>
+                <p class="text-brand-light/80 text-lg mb-8 max-w-xl mx-auto">
+                    Subscribe to our newsletter to get new ebooks, reports, and industry insights delivered directly to your inbox.
+                </p>
+                
+                <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" class="flex-grow rounded-xl px-4 py-3 glass-input transition-colors" placeholder="Business email">
+                    <button class="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-purple to-brand-pink hover:to-brand-purple transition-all font-bold text-white shadow-lg whitespace-nowrap">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-xs text-brand-light/40 mt-4">We respect your privacy. Unsubscribe at any time.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="footer" class="ct-section">
-    <div class="ct-section-inner-wrap footer-flex">
-        <div>
-            <div style="font-weight: bold; font-family: Cardo; font-size: 24px; margin-bottom: 20px;">Sensemitter</div>
-            <div style="color: #ccc; font-size: 14px; line-height: 1.6;">
-                Sensemitter Services LTD.<br>
-                Limassol, Cyprus
+<footer class="border-t border-white/10 py-16 bg-brand-darker">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-sm mb-16">
+            <div class="col-span-1 md:col-span-1">
+                 <a href="/" class="flex items-center gap-2 mb-6 group">
+                    <span class="font-display font-bold text-xl text-white">Sensemitter</span>
+                </a>
+                <p class="text-brand-light/60 leading-relaxed mb-6">
+                    Sensemitter Services LTD.<br>
+                    Limassol, Cyprus
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-brand-light/60 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-brand-light/60 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
             </div>
-            <div style="color: #666; font-size: 12px; margin-top: 20px;">© 2026 Sensemitter</div>
-        </div>
-        
-        <div style="display: flex; gap: 40px;">
-            <div>
-                <h4 style="color: #fff; margin-bottom: 15px;">Resources</h4>
-                <ul style="list-style: none; padding: 0; font-size: 14px; color: #ccc; line-height: 2;">
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Ebooks</a></li>
-                    <li><a href="#">Case Studies</a></li>
+
+            <div class="md:col-start-3">
+                <div class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Resources</div>
+                <ul class="space-y-3 text-brand-light/70">
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Blog</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors text-white font-medium">Ebooks</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Case Studies</a></li>
                 </ul>
             </div>
+            
             <div>
-                <h4 style="color: #fff; margin-bottom: 15px;">Company</h4>
-                <ul style="list-style: none; padding: 0; font-size: 14px; color: #ccc; line-height: 2;">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact</a></li>
+                <div class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Company</div>
+                <ul class="space-y-3 text-brand-light/70">
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Careers</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Contact</a></li>
                 </ul>
             </div>
         </div>
+
+        <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-brand-light/40">
+            <div>© 2026 Sensemitter. All rights reserved.</div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
     </div>
-</section>
+</footer>
+
+<script>
+    lucide.createIcons();
+</script>
 
 </body>
 </html>
