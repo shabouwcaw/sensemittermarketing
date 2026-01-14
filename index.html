@@ -3,178 +3,342 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emhance AI – Mockups Index</title>
+  <title>Emhance AI – Mockups Site Tree</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0E1A2B',
+              darker: '#050a11',
+              purple: '#6B5AED',
+              pink: '#F36ED2',
+              green: '#86E27B',
+              surface: '#F5F7FF',
+              light: '#C9D3FF'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          backgroundImage: {
+            'glow-radial': 'radial-gradient(circle at 50% 0%, rgba(107, 90, 237, 0.15) 0%, rgba(14, 26, 43, 0) 70%)',
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    :root{
-      --bg: #f8fafc;
-      --panel: #ffffff;
-      --border: #e2e8f0;
-      --text: #0f172a;
-      --muted: #475569;
-      --link: #2563eb;
-      --link-hover: #1d4ed8;
+    body {
+      background-color: #0E1A2B;
+      color: #F5F7FF;
     }
 
-    *{ box-sizing: border-box; }
-
-    body{
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      padding: 32px 18px 56px;
+    /* Glassmorphism Classes */
+    .glass-panel {
+      background: rgba(245, 247, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(201, 211, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .glass-panel:hover {
+      background: rgba(245, 247, 255, 0.06);
+      border-color: rgba(107, 90, 237, 0.4);
+      transform: translateX(4px);
+      box-shadow: 0 0 20px rgba(107, 90, 237, 0.1);
     }
 
-    .wrap{
-      max-width: 860px;
-      margin: 0 auto;
+    /* Tree Structure CSS */
+    .tree-list {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      margin-left: 1.5rem;
     }
 
-    header{
-      margin-bottom: 22px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
+    .tree-item {
+      position: relative;
+      margin-top: 1.5rem;
     }
 
-    h1{
-      margin: 0 0 8px;
-      font-size: 22px;
+    /* The horizontal connector branch */
+    .tree-item::before {
+      content: '';
+      position: absolute;
+      top: 1.5rem; /* Center with the card height roughly */
+      left: -2rem; /* Reach back to the border-left of parent */
+      width: 2rem;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Active glow for branches */
+    .tree-item:hover::before {
+      background: linear-gradient(90deg, rgba(107, 90, 237, 0), #6B5AED);
     }
 
-    .sub{
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 72ch;
-    }
-
-    .tree{
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: 10px;
-      padding: 16px 18px;
-    }
-
-    ul{
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    li{
-      margin: 6px 0;
-    }
-
-    .muted{
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 6px;
-    }
-
-    a{
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:hover{
-      color: var(--link-hover);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    code{
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
+    .code-badge {
+      font-family: monospace;
+      font-size: 0.75rem;
+      background: rgba(0,0,0,0.3);
       padding: 2px 6px;
-      border-radius: 6px;
-      font-size: 12px;
+      border-radius: 4px;
+      color: #86E27B;
+      border: 1px solid rgba(134, 226, 123, 0.2);
     }
 
-    footer{
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 12px;
+    .placeholder-badge {
+      color: #F36ED2;
+      border-color: rgba(243, 110, 210, 0.2);
     }
   </style>
 </head>
 
-<body>
-  <div class="wrap">
-    <header>
-      <h1>Emhance AI website mockups</h1>
-      <p class="sub">
-        The homepage you already have and it is not listed here. This index is a simple site tree for the
-        remaining mockup pages. Each top level bullet is a menu item and the pages below are the options.
+<body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+
+  <div class="fixed inset-0 bg-glow-radial pointer-events-none"></div>
+
+  <div class="max-w-4xl mx-auto w-full px-6 py-12 relative z-10">
+    
+    <header class="mb-12 text-center">
+      <div class="inline-flex items-center justify-center p-3 rounded-full bg-brand-purple/10 mb-4 border border-brand-purple/20">
+        <i data-lucide="layout-template" class="text-brand-purple w-6 h-6"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-brand-light">
+        Emhance AI <span class="text-brand-purple">Mockups</span>
+      </h1>
+      <p class="text-brand-light/60 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+        Site architecture and mockup index. Each node represents a page in the design system.
+        <br>Click a card to navigate to the specific mockup.
       </p>
     </header>
 
-    <div class="tree" aria-label="Site tree">
-      <ul>
-        <li>
-          Homepage <span class="muted">(not shown here)</span>
-        </li>
+    <div class="mb-8">
+      <div class="glass-panel p-4 rounded-xl border-brand-purple/30 shadow-[0_0_30px_rgba(107,90,237,0.15)] flex items-center gap-4 hover:translate-x-0 cursor-default">
+        <div class="bg-brand-purple rounded-lg p-2 text-white">
+          <i data-lucide="home" class="w-5 h-5"></i>
+        </div>
+        <div class="flex-1">
+          <h2 class="text-lg font-bold text-white font-display">Homepage</h2>
+          <div class="flex items-center gap-2 mt-1">
+            <span class="text-xs text-brand-light/50">Current Live Page</span>
+            <span class="text-[10px] uppercase tracking-wider bg-white/10 px-2 py-0.5 rounded text-white/60">Not Listed</span>
+          </div>
+        </div>
+      </div>
 
-        <li>
-          Products
-          <ul>
-            <li><a href="Playtesting.html">Playtest</a> <span class="muted">(<code>Playtesting.html</code>)</span></li>
-            <li><a href="ASO.html">ASO</a> <span class="muted">(<code>ASO.html</code>)</span></li>
-            <li><a href="Creative.html">Creative</a> <span class="muted">(<code>Creative.html</code>)</span></li>
-          </ul>
-        </li>
+      <div class="tree-list">
+        
+        <div class="tree-item">
+          <div class="glass-panel p-4 rounded-xl flex flex-col gap-1 cursor-default opacity-80">
+            <div class="flex items-center gap-2 text-brand-light font-display font-semibold">
+              <i data-lucide="folder" class="w-4 h-4 text-brand-purple"></i> Products
+            </div>
+          </div>
 
-        <li>
-          Solutions
-          <ul>
-            <li>
-              Team
-              <ul>
-                <li><a href="Game_Design.html">Game Designers</a> <span class="muted">(<code>Game_Design.html</code>)</span></li>
-                <li><a href="User_Research.html">User Researchers</a> <span class="muted">(<code>User_Research.html</code>)</span></li>
-                <li><a href="Marketers.html">Marketers</a> <span class="muted">(<code>Marketers.html</code>)</span></li>
-                <li><a href="Executives.html">Executives</a> <span class="muted">(<code>Executives.html</code>)</span></li>
-              </ul>
-            </li>
-            <li class="muted">Goal submenu (planned, omitted for now)</li>
-          </ul>
-        </li>
+          <div class="tree-list">
+            <div class="tree-item">
+              <a href="Playtesting.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="gamepad-2" class="w-4 h-4 text-brand-pink group-hover:text-white transition-colors"></i>
+                  <span class="font-medium text-brand-surface">Playtest</span>
+                </div>
+                <span class="code-badge">Playtesting.html</span>
+              </a>
+            </div>
 
-        <li>
-          Technology
-          <ul>
-            <li><a href="Science_Research.html">Research</a> <span class="muted">(<code>Science_Research.html</code>)</span></li>
-          </ul>
-        </li>
+            <div class="tree-item">
+              <a href="ASO.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="bar-chart-2" class="w-4 h-4 text-brand-pink group-hover:text-white transition-colors"></i>
+                  <span class="font-medium text-brand-surface">ASO</span>
+                </div>
+                <span class="code-badge">ASO.html</span>
+              </a>
+            </div>
 
-        <li><a href="Pricing.html">Pricing</a> <span class="muted">(<code>Pricing.html</code>)</span></li>
+            <div class="tree-item">
+              <a href="Creative.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="palette" class="w-4 h-4 text-brand-pink group-hover:text-white transition-colors"></i>
+                  <span class="font-medium text-brand-surface">Creative</span>
+                </div>
+                <span class="code-badge">Creative.html</span>
+              </a>
+            </div>
+          </div>
+        </div>
 
-        <li>
-          About Us
-          <ul>
-            <li><a href="About_Us.html">About Us</a> <span class="muted">(<code>About_Us.html</code>)</span></li>
-          </ul>
-        </li>
+        <div class="tree-item">
+          <div class="glass-panel p-4 rounded-xl flex flex-col gap-1 cursor-default opacity-80">
+             <div class="flex items-center gap-2 text-brand-light font-display font-semibold">
+              <i data-lucide="folder" class="w-4 h-4 text-brand-purple"></i> Solutions
+            </div>
+          </div>
 
-        <li><a href="Book_A_Demo.html">Book a Demo</a> <span class="muted">(<code>Book_A_Demo.html</code>)</span></li>
+          <div class="tree-list">
+             <div class="tree-item">
+              <div class="glass-panel p-3 rounded-xl flex items-center gap-2 cursor-default border-dashed border-white/20">
+                <i data-lucide="users" class="w-4 h-4 text-brand-light/50"></i>
+                <span class="text-brand-light/70 text-sm">By Team</span>
+              </div>
 
-        <li>
-          Resources
-          <ul>
-            <li><a href="Blog.html">Blog</a> <span class="muted">(<code>Blog.html</code>)</span></li>
-            <li><a href="Success_Stories.html">Success Stories</a> <span class="muted">(<code>Success_Stories.html</code>)</span></li>
-            <li><a href="Reports.html">Research / Reports / eBooks</a> <span class="muted">(<code>Reports.html</code>)</span></li>
-          </ul>
-        </li>
-      </ul>
+              <div class="tree-list">
+                <div class="tree-item">
+                  <a href="Game_Design.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                    <span class="font-medium text-brand-surface text-sm">Game Designers</span>
+                    <span class="code-badge">Game_Design.html</span>
+                  </a>
+                </div>
+                <div class="tree-item">
+                  <a href="User_Research.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                    <span class="font-medium text-brand-surface text-sm">User Researchers</span>
+                    <span class="code-badge">User_Research.html</span>
+                  </a>
+                </div>
+                <div class="tree-item">
+                  <a href="Marketers.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                    <span class="font-medium text-brand-surface text-sm">Marketers</span>
+                    <span class="code-badge">Marketers.html</span>
+                  </a>
+                </div>
+                <div class="tree-item">
+                  <a href="Executives.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                    <span class="font-medium text-brand-surface text-sm">Executives</span>
+                    <span class="code-badge">Executives.html</span>
+                  </a>
+                </div>
+              </div>
+            </div>
 
-      <p class="muted">
-        Note: Book a Demo, Blog, Success Stories, and Research/Reports are placeholders. Copy can be added when you share direction.
-      </p>
-    </div>
+             <div class="tree-item">
+              <div class="glass-panel p-3 rounded-xl flex items-center justify-between opacity-50 border-dashed border-white/10">
+                <span class="text-sm italic text-brand-light/50">Goal Submenu (Planned)</span>
+                <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-white/30">Omitted</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <footer>
-      © 2026 Emhance AI (mockups).
+        <div class="tree-item">
+          <div class="glass-panel p-4 rounded-xl flex flex-col gap-1 cursor-default opacity-80">
+            <div class="flex items-center gap-2 text-brand-light font-display font-semibold">
+              <i data-lucide="folder" class="w-4 h-4 text-brand-purple"></i> Technology
+            </div>
+          </div>
+          <div class="tree-list">
+             <div class="tree-item">
+              <a href="Science_Research.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="microscope" class="w-4 h-4 text-brand-pink group-hover:text-white transition-colors"></i>
+                  <span class="font-medium text-brand-surface">Research</span>
+                </div>
+                <span class="code-badge">Science_Research.html</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tree-item">
+          <a href="Pricing.html" class="glass-panel p-4 rounded-xl flex items-center justify-between group block border-brand-green/20">
+             <div class="flex items-center gap-2 font-display font-semibold text-white">
+              <i data-lucide="credit-card" class="w-4 h-4 text-brand-green"></i> Pricing
+            </div>
+            <span class="code-badge">Pricing.html</span>
+          </a>
+        </div>
+
+         <div class="tree-item">
+          <div class="glass-panel p-4 rounded-xl flex flex-col gap-1 cursor-default opacity-80">
+            <div class="flex items-center gap-2 text-brand-light font-display font-semibold">
+              <i data-lucide="folder" class="w-4 h-4 text-brand-purple"></i> About Us
+            </div>
+          </div>
+          <div class="tree-list">
+             <div class="tree-item">
+              <a href="About_Us.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="info" class="w-4 h-4 text-brand-pink group-hover:text-white transition-colors"></i>
+                  <span class="font-medium text-brand-surface">About Us</span>
+                </div>
+                <span class="code-badge">About_Us.html</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tree-item">
+          <a href="Book_A_Demo.html" class="glass-panel p-4 rounded-xl flex items-center justify-between group block border-brand-purple/40 bg-brand-purple/5">
+             <div class="flex items-center gap-2 font-display font-semibold text-white">
+              <i data-lucide="calendar" class="w-4 h-4 text-brand-purple"></i> Book a Demo
+            </div>
+            <div class="flex items-center gap-2">
+               <span class="code-badge placeholder-badge">Placeholder</span>
+               <span class="code-badge">Book_A_Demo.html</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="tree-item">
+          <div class="glass-panel p-4 rounded-xl flex flex-col gap-1 cursor-default opacity-80">
+            <div class="flex items-center gap-2 text-brand-light font-display font-semibold">
+              <i data-lucide="folder" class="w-4 h-4 text-brand-purple"></i> Resources
+            </div>
+          </div>
+          <div class="tree-list">
+             <div class="tree-item">
+              <a href="Blog.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                <span class="font-medium text-brand-surface">Blog</span>
+                 <div class="flex items-center gap-2">
+                  <span class="code-badge placeholder-badge">Copy Pending</span>
+                  <span class="code-badge">Blog.html</span>
+                 </div>
+              </a>
+            </div>
+             <div class="tree-item">
+              <a href="Success_Stories.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                <span class="font-medium text-brand-surface">Success Stories</span>
+                 <div class="flex items-center gap-2">
+                  <span class="code-badge placeholder-badge">Copy Pending</span>
+                  <span class="code-badge">Success_Stories.html</span>
+                 </div>
+              </a>
+            </div>
+             <div class="tree-item">
+              <a href="Reports.html" class="glass-panel p-3 rounded-xl flex items-center justify-between group block">
+                <span class="font-medium text-brand-surface">Research / eBooks</span>
+                 <div class="flex items-center gap-2">
+                  <span class="code-badge placeholder-badge">Copy Pending</span>
+                  <span class="code-badge">Reports.html</span>
+                 </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div> </div>
+
+    <footer class="mt-16 text-center border-t border-white/10 pt-8 text-xs text-brand-light/40">
+      <p>© 2026 Emhance AI (Mockup Index).</p>
+      <p class="mt-2">Note: Placeholder pages may require copy updates once direction is finalized.</p>
     </footer>
+
   </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
