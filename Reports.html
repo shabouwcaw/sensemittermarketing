@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-US" style="--vw-100: 100vw; --vw: 1vw;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ebook Library - Sensemitter</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope:200,300,500,600,700,800,regular">
+<style>
+    /* CORE FONTS */
+    @font-face{font-family:Inter;font-style:normal;font-weight:300 900;src:url('https://sensemitter.com/wp-content/themes/oxygen-is-not-a-theme/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2') format('woff2');}
+    @font-face{font-family:Cardo;font-style:normal;font-weight:400;src:url('https://sensemitter.com/wp-content/themes/oxygen-is-not-a-theme/assets/fonts/cardo/cardo_normal_400.woff2') format('woff2');}
+    @font-face{font-family:Cardo;font-style:normal;font-weight:700;src:url('https://sensemitter.com/wp-content/themes/oxygen-is-not-a-theme/assets/fonts/cardo/cardo_normal_700.woff2') format('woff2');}
+
+    /* OXYGEN BUILDER & THEME STYLES (Retained from your source) */
+    :root{--wp--preset--color--vivid-purple: #9b51e0;--wp-block-synced-color:#7a00df;}
+    body { font-family: 'Inter', sans-serif; margin: 0; color: #1A191A; background-color: #fff; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    
+    /* Layout Helpers */
+    .ct-section { width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .ct-section-inner-wrap { width: 100%; max-width: 1120px; padding: 20px; display: flex; flex-direction: column; }
+    .section-py-0 { padding-top: 0; padding-bottom: 0; }
+    .spacing-lg { margin-top: 60px; margin-bottom: 60px; }
+    .spacing-md { margin-bottom: 30px; }
+    
+    /* Header Styling */
+    #header { border-bottom: 1px solid #eee; padding: 15px 0; }
+    .nav-items { display: flex; align-items: center; justify-content: flex-end; width: 100%; gap: 20px; }
+    .menu-primary-container ul { list-style: none; display: flex; gap: 30px; padding: 0; margin: 0; }
+    .menu-item-title { font-weight: 600; font-size: 15px; }
+    
+    /* Grid Styling (The Core Ebook Look) */
+    .cs-post-feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; width: 100%; margin-top: 40px; }
+    article.reports { display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #f0f0f0; }
+    article.reports:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    
+    .pic { width: 100%; padding-top: 60%; position: relative; overflow: hidden; }
+    .featured-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    article.reports:hover .featured-image { transform: scale(1.05); }
+    
+    .data { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; background: #fff; }
+    .entry-title { font-family: 'Cardo', serif; font-size: 22px; margin: 0 0 15px 0; line-height: 1.3; color: #1A191A; }
+    .entry-desc { font-size: 15px; color: #666; margin-bottom: 20px; line-height: 1.5; }
+    
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; padding: 10px 20px; border-radius: 5px; transition: all 0.3s; }
+    .btn-link { padding: 0; color: #933AE6; justify-content: flex-start; gap: 8px; }
+    .btn-link:hover { color: #7a00df; gap: 12px; }
+    .btn-black { background: #1A191A; color: #fff; border-radius: 50px; padding: 12px 24px; font-size: 14px; }
+    .btn-black:hover { background: #933AE6; color: #fff; }
+    
+    /* Footer & Hero Text */
+    .page-title-block { text-align: center; margin: 60px 0 20px; }
+    .page-title-h1 { font-family: 'Cardo', serif; font-size: 42px; margin-bottom: 15px; }
+    .page-subtitle { font-size: 18px; color: #666; max-width: 600px; margin: 0 auto; }
+
+    /* Icons */
+    .icon svg { width: 100%; height: 100%; }
+    .icon-14 { width: 14px; height: 14px; }
+
+    /* Footer structure simplified */
+    #footer { background: #1A191A; color: #fff; padding: 60px 0; margin-top: 80px; }
+    #footer svg { height: 30px; width: auto; }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
+</style>
+</head>
+
+<body class="archive post-type-archive post-type-archive-reports oxygen-body">
+
+<section id="header" class="ct-section page-header">
+    <div class="ct-section-inner-wrap">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" title="Home" style="width: 200px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 269 40">
+                    <path fill="#933AE6" d="M14.96 4.91V0H9.39... (Original Logo Path)"></path>
+                    <text x="0" y="30" fill="#1A191A" font-family="Cardo" font-size="28" font-weight="bold">Sensemitter</text>
+                </svg>
+            </a>
+
+            <div class="nav-items hidden-mobile">
+                <div class="menu-primary-container">
+                    <ul id="menu-primary" class="menu">
+                        <li class="menu-item"><a href="https://sensemitter.com/playtesting/">Services</a></li>
+                        <li class="menu-item"><a href="https://sensemitter.com/use-cases/">Use Cases</a></li>
+                        <li class="menu-item current-menu-item"><a href="#" style="color:#933AE6;">Resources</a></li>
+                        <li class="menu-item"><a href="https://sensemitter.com/company/">Company</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-black" href="#demo">Request Demo</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ct-section">
+    <div class="ct-section-inner-wrap">
+        <div class="page-title-block">
+            <h1 class="page-title-h1">Knowledge Library</h1>
+            <p class="page-subtitle">Download our latest eBooks, whitepapers, and guides to master game development and monetization.</p>
+        </div>
+    </div>
+</section>
+
+<section id="section-ebooks" class="ct-section cs-section">
+    <div class="ct-section-inner-wrap">
+        <div class="ct-code-block cs-post-feed reports-post-feed">
+            
+            <article class="reports type-reports status-publish has-post-thumbnail">
+                <a href="#">
+                    <div class="pic">
+                        <div class="featured-image" style="background-image: url(https://sensemitter.com/wp-content/uploads/2025/11/ftue-landing-pagehero-1.png)"></div>
+                    </div>
+                    <div class="data spacing-sm">
+                        <div class="first spacing-sm">
+                            <h2 class="entry-title">The Ultimate Guide to FTUE Monetization</h2>
+                            <p class="entry-desc">Learn how to optimize your First Time User Experience to boost retention and revenue.</p>
+                        </div>
+                        <div class="second">
+                            <div class="read-more btn btn-link">
+                                <div class="cta">Download Ebook</div>
+                                <div class="icon icon-14">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 11"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.5h10.37m0 0-4.46-4m4.46 4-4.46 4"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <article class="reports type-reports status-publish has-post-thumbnail">
+                <a href="#">
+                    <div class="pic">
+                        <div class="featured-image" style="background-image: url(https://sensemitter.com/wp-content/uploads/2025/09/1-1.webp)"></div>
+                    </div>
+                    <div class="data spacing-sm">
+                        <div class="first spacing-sm">
+                            <h2 class="entry-title">Emotion AI: The Future of Playtesting</h2>
+                            <p class="entry-desc">Discover how analyzing player emotions can predict game success before launch.</p>
+                        </div>
+                        <div class="second">
+                            <div class="read-more btn btn-link">
+                                <div class="cta">Download Ebook</div>
+                                <div class="icon icon-14">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 11"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.5h10.37m0 0-4.46-4m4.46 4-4.46 4"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+            <article class="reports type-reports status-publish has-post-thumbnail">
+                <a href="#">
+                    <div class="pic">
+                        <div class="featured-image" style="background-image: url(https://sensemitter.com/wp-content/uploads/2025/04/cg-report-s1.png)"></div>
+                    </div>
+                    <div class="data spacing-sm">
+                        <div class="first spacing-sm">
+                            <h2 class="entry-title">ASO Strategies: Converting Visitors to Players</h2>
+                            <p class="entry-desc">A deep dive into store page assets and how they influence conversion rates.</p>
+                        </div>
+                        <div class="second">
+                            <div class="read-more btn btn-link">
+                                <div class="cta">Download Ebook</div>
+                                <div class="icon icon-14">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 11"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.5h10.37m0 0-4.46-4m4.46 4-4.46 4"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+             <article class="reports type-reports status-publish has-post-thumbnail">
+                <a href="#">
+                    <div class="pic">
+                        <div class="featured-image" style="background-image: url(https://sensemitter.com/wp-content/uploads/2024/11/rm-report-s1-.webp)"></div>
+                    </div>
+                    <div class="data spacing-sm">
+                        <div class="first spacing-sm">
+                            <h2 class="entry-title">Deconstructing Puzzle Game Mechanics</h2>
+                            <p class="entry-desc">Analysis of top-performing puzzle games and what makes them sticky.</p>
+                        </div>
+                        <div class="second">
+                            <div class="read-more btn btn-link">
+                                <div class="cta">Download Ebook</div>
+                                <div class="icon icon-14">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 13 11"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.5h10.37m0 0-4.46-4m4.46 4-4.46 4"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section id="demo" class="ct-section spacing-lg">
+    <div class="ct-section-inner-wrap" style="text-align: center; max-width: 600px;">
+        <div class="submit-form-title spacing-md">
+            <h2 class="ct-headline" style="font-family: 'Cardo', serif; font-size: 36px; margin-bottom: 10px;">Get Full Access</h2>
+            <div class="ct-text-block lead" style="color: #666; font-size: 18px;">Subscribe to our newsletter to get new ebooks delivered to your inbox.</div>
+        </div>
+        <div style="background: #f9f9f9; padding: 30px; border-radius: 8px; border: 1px solid #eee;">
+            <p style="color:#999; font-size: 14px;">[HubSpot Form Embed would go here]</p>
+            <div style="margin-top:20px;">
+                <input type="email" placeholder="Business email" style="padding: 12px; width: 60%; border: 1px solid #ccc; border-radius: 4px;">
+                <button class="btn btn-black" style="border-radius: 4px;">Subscribe</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="footer" class="ct-section">
+    <div class="ct-section-inner-wrap footer-flex">
+        <div>
+            <div style="font-weight: bold; font-family: Cardo; font-size: 24px; margin-bottom: 20px;">Sensemitter</div>
+            <div style="color: #ccc; font-size: 14px; line-height: 1.6;">
+                Sensemitter Services LTD.<br>
+                Limassol, Cyprus
+            </div>
+            <div style="color: #666; font-size: 12px; margin-top: 20px;">© 2026 Sensemitter</div>
+        </div>
+        
+        <div style="display: flex; gap: 40px;">
+            <div>
+                <h4 style="color: #fff; margin-bottom: 15px;">Resources</h4>
+                <ul style="list-style: none; padding: 0; font-size: 14px; color: #ccc; line-height: 2;">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Ebooks</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #fff; margin-bottom: 15px;">Company</h4>
+                <ul style="list-style: none; padding: 0; font-size: 14px; color: #ccc; line-height: 2;">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
