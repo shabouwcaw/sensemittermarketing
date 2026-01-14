@@ -1,156 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Development & Research Services</title>
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --hover-color: #1d4ed8;
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-            --card-bg: #ffffff;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emhance AI – Mockups Index</title>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.09);
+      --border: rgba(255,255,255,0.14);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --muted-2: rgba(255,255,255,0.55);
+      --link: rgba(255,255,255,0.92);
+      --shadow: 0 14px 40px rgba(0,0,0,0.35);
+      --radius-lg: 18px;
+      --radius-md: 14px;
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 40px 20px;
-            line-height: 1.6;
-        }
+      --focus: rgba(255,255,255,0.28);
+      --ring: 0 0 0 3px rgba(255,255,255,0.18);
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+      /* Accent can be swapped later to match brand palette */
+      --accent: #7c3aed;
+      --accent-2: #22c55e;
+      --accent-3: #06b6d4;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(124,58,237,0.25), transparent 60%),
+        radial-gradient(1000px 540px at 85% 15%, rgba(6,182,212,0.18), transparent 55%),
+        radial-gradient(900px 500px at 55% 85%, rgba(34,197,94,0.12), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #0f172a;
-        }
+    a{ color: var(--link); text-decoration: none; }
+    a:focus{ outline: none; box-shadow: var(--ring); border-radius: 10px; }
 
-        p.subtitle {
-            font-size: 1.1rem;
-            color: #64748b;
-        }
+    .wrap{
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 18px 56px;
+    }
 
-        .section-title {
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.25rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #475569;
-        }
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 18px 10px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
+    .brand{
+      min-width: 260px;
+    }
+    .brand .kicker{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin: 0 0 8px;
+    }
+    .brand h1{
+      font-size: 22px;
+      margin: 0 0 8px;
+      letter-spacing: 0.2px;
+    }
+    .brand p{
+      margin: 0;
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 14px;
+    }
 
-        .card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            color: var(--text-color);
-            border: 1px solid #e2e8f0;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+    .meta{
+      display:flex;
+      flex-direction: column;
+      align-items:flex-end;
+      gap: 10px;
+      min-width: 240px;
+    }
+    .pillrow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .pill{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pill strong{ color: var(--text); font-weight: 600; }
+    .note{
+      font-size: 12px;
+      color: var(--muted-2);
+      text-align: right;
+      max-width: 44ch;
+    }
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
+    .main{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr 2fr;
+      gap: 18px;
+      align-items: start;
+    }
 
-        .card span {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
+    @media (max-width: 900px){
+      .main{ grid-template-columns: 1fr; }
+      .meta{ align-items:flex-start; }
+      .pillrow{ justify-content:flex-start; }
+      header{ flex-direction: column; }
+    }
 
-        footer {
-            margin-top: 60px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-    </style>
+    .panel{
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+
+    .panel .hd{
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(255,255,255,0.03);
+    }
+    .panel .hd h2{
+      font-size: 13px;
+      margin: 0;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .panel .hd .small{
+      font-size: 12px;
+      color: var(--muted-2);
+      white-space: nowrap;
+    }
+    .panel .bd{
+      padding: 16px;
+    }
+
+    .navlist{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .navitem{
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-md);
+      padding: 12px 12px;
+    }
+    .navitem .top{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .navitem .label{
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .navitem .chip{
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--muted-2);
+      background: rgba(255,255,255,0.03);
+      white-space: nowrap;
+    }
+    .navitem .desc{
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+    .navitem .desc em{
+      font-style: normal;
+      color: rgba(255,255,255,0.80);
+    }
+
+    .sections{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-md);
+      padding: 14px 14px;
+      min-height: 98px;
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    }
+    .card:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .card .title{
+      font-weight: 650;
+      font-size: 14px;
+      margin: 0 0 6px;
+      letter-spacing: 0.2px;
+    }
+    .card .sub{
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .card .meta2{
+      margin-top: 10px;
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .tag{
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.03);
+    }
+    .tag.live{
+      border-color: rgba(34,197,94,0.35);
+      color: rgba(34,197,94,0.95);
+      background: rgba(34,197,94,0.08);
+    }
+    .tag.placeholder{
+      border-color: rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.60);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .muted{
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted-2);
+      font-size: 12px;
+      padding: 14px 2px 0;
+      display:flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    footer a{ color: rgba(255,255,255,0.75); text-decoration: underline; text-underline-offset: 2px; }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <p class="kicker">Emhance AI · Corporate Site Mockups</p>
+        <h1>Index (internal)</h1>
+        <p>
+          This page provides context for the non-homepage mockups. The homepage is being developed separately and is
+          not listed here.
+        </p>
+      </div>
 
-    <div class="container">
-        <header>
-            <h1>Game Development Hub</h1>
-            <p class="subtitle">Creative Services, Data Science, and Strategic Growth</p>
-        </header>
-
-        <h2 class="section-title">Production & Marketing</h2>
-        <div class="grid">
-            <a href="Game_Design.html" class="card">
-                <span>Game Design</span>
-            </a>
-            <a href="Creative.html" class="card">
-                <span>Creative</span>
-            </a>
-            <a href="ASO.html" class="card">
-                <span>ASO</span>
-            </a>
-            <a href="Playtesting.html" class="card">
-                <span>Playtesting</span>
-            </a>
+      <div class="meta">
+        <div class="pillrow">
+          <span class="pill"><strong>Menu</strong>: Products · Solutions · Technology · Pricing · About Us · Book a Demo · Resources</span>
+          <span class="pill"><strong>Status</strong>: mockups in progress</span>
         </div>
-
-        <h2 class="section-title">Research & Science</h2>
-        <div class="grid">
-            <a href="Science_Research.html" class="card">
-                <span>Science Research</span>
-            </a>
-            <a href="User_Research.html" class="card">
-                <span>User Research</span>
-            </a>
+        <div class="note">
+          Keep filenames as-is for now. When final IA is confirmed, these can be routed to their production URLs.
         </div>
+      </div>
+    </header>
 
-        <h2 class="section-title">Company & Team</h2>
-        <div class="grid">
-            <a href="About_Us.html" class="card">
-                <span>About Us</span>
-            </a>
-            <a href="Executives.html" class="card">
-                <span>Executives</span>
-            </a>
-            <a href="Marketers.html" class="card">
-                <span>Marketers</span>
-            </a>
-            <a href="Pricing.html" class="card">
-                <span>Pricing</span>
-            </a>
+    <div class="main">
+      <!-- Left: Information architecture -->
+      <section class="panel" aria-label="Information architecture">
+        <div class="hd">
+          <h2>Site tree</h2>
+          <div class="small">Top-level nav + submenus</div>
         </div>
+        <div class="bd">
+          <ul class="navlist">
+            <li class="navitem">
+              <div class="top">
+                <div class="label">Homepage</div>
+                <div class="chip">Not shown here</div>
+              </div>
+              <p class="desc">The homepage mockup has been sent to design and is in progress.</p>
+            </li>
 
-        <footer>
-            &copy; 2026 Shabouwcaw Games. All rights reserved.
-        </footer>
-    </div>
+            <li class="navitem">
+              <div class="top">
+                <div class="label">Products</div>
+                <div class="chip">Submenu</div>
+              </div>
+              <p class="desc">
+                Pages: <em>Playtest</em>, <em>ASO</em>, <em>Creative</em>.
+              </p>
+            </li>
 
-</body>
-</html>
+            <li class="navitem">
+              <div class="top">
+                <div class="label">Solutions</div>
+                <div class="chip">Submenu</div>
+              </div>
+              <p class="desc">
+                For now: only <em>Team</em> pages (<em>Game Designers</em>, <em>User Researchers</em>, <em>Marketers</em>, <em>Executives</em>).
+                The <em>Goal</em> submenu is intentionally omitted in these mockups, but remains part of the planned IA.
+              </p>
+            </li>
+
+            <li class="navitem">
+              <div class="top">
+                <div class="label">Technology</div>
+                <div class="chip">Submenu</div>
+              </div>
+              <p class="desc">
+                Page: <em>Research</em>.
+              </p>
+            </li>
+
+            <li class="navitem">
+              <div class="top">
+                <div class="label">Pricing</div>
+                <div class="chip">Single page</div>
+              </div>
+              <p class="desc">Pricing page mockup.</p>
+            </li>
+
+            <li class="navitem">
+              <div class="top">
+                <div class="label">About Us</div>
+                <div class="chip">Single page</div>
+              </div>
+              <p class="desc">Company overview page mockup.</p>
+            </li>
+
+            <li class="navitem">
+              <div class="top">
+                <div class="label">Book a Demo</div>
+                <div class="chip">Single page</div>
+              </div>
+              <p class="desc">
+                Book a Demo page exists as a stub for now. Copy can be added later.
+              </p>
+            </li>
+
+            <li class="navitem">
+              <div class="top">
+                <div class="label">Resources</div>
+                <div class="chip">Submenu</div>
+              </div>
+              <p class="desc">
+                Pages: <em>Blog</em>, <em>Success Stories</em>, <em>Research / Reports / eBooks (lead magnets)</em>.
+                These exist as stubs for now. Copy can be added later.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Right: Link cards -->
+      <section class="sections" a
