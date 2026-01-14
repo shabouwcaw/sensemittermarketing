@@ -6,636 +6,174 @@
   <title>Emhance AI – Mockups Index</title>
   <style>
     :root{
-      --bg: #0b1020;
-      --panel: rgba(255,255,255,0.06);
-      --panel-2: rgba(255,255,255,0.09);
-      --border: rgba(255,255,255,0.14);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.68);
-      --muted-2: rgba(255,255,255,0.55);
-      --link: rgba(255,255,255,0.92);
-      --shadow: 0 14px 40px rgba(0,0,0,0.35);
-      --radius-lg: 18px;
-      --radius-md: 14px;
-
-      --focus: rgba(255,255,255,0.28);
-      --ring: 0 0 0 3px rgba(255,255,255,0.18);
-
-      /* Accent can be swapped later to match brand palette */
-      --accent: #7c3aed;
-      --accent-2: #22c55e;
-      --accent-3: #06b6d4;
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #475569;
+      --link: #2563eb;
+      --link-hover: #1d4ed8;
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing: border-box; }
+
     body{
-      margin:0;
+      margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(124,58,237,0.25), transparent 60%),
-        radial-gradient(1000px 540px at 85% 15%, rgba(6,182,212,0.18), transparent 55%),
-        radial-gradient(900px 500px at 55% 85%, rgba(34,197,94,0.12), transparent 55%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.45;
-    }
-
-    a{ color: var(--link); text-decoration: none; }
-    a:focus{ outline: none; box-shadow: var(--ring); border-radius: 10px; }
-
-    .wrap{
-      max-width: 1120px;
-      margin: 0 auto;
+      line-height: 1.5;
       padding: 32px 18px 56px;
     }
 
+    .wrap{
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
     header{
-      display:flex;
-      align-items:flex-start;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 18px 18px 10px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .brand{
-      min-width: 260px;
-    }
-    .brand .kicker{
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted-2);
+    h1{
       margin: 0 0 8px;
-    }
-    .brand h1{
       font-size: 22px;
-      margin: 0 0 8px;
-      letter-spacing: 0.2px;
     }
-    .brand p{
+
+    .sub{
       margin: 0;
       color: var(--muted);
-      max-width: 62ch;
       font-size: 14px;
+      max-width: 72ch;
     }
 
-    .meta{
-      display:flex;
-      flex-direction: column;
-      align-items:flex-end;
-      gap: 10px;
-      min-width: 240px;
-    }
-    .pillrow{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: flex-end;
-    }
-    .pill{
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .pill strong{ color: var(--text); font-weight: 600; }
-    .note{
-      font-size: 12px;
-      color: var(--muted-2);
-      text-align: right;
-      max-width: 44ch;
-    }
-
-    .main{
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: 1.1fr 2fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    @media (max-width: 900px){
-      .main{ grid-template-columns: 1fr; }
-      .meta{ align-items:flex-start; }
-      .pillrow{ justify-content:flex-start; }
-      header{ flex-direction: column; }
-    }
-
-    .panel{
+    .tree{
       border: 1px solid var(--border);
       background: var(--panel);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      overflow: hidden;
+      border-radius: 10px;
+      padding: 16px 18px;
     }
 
-    .panel .hd{
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      background: rgba(255,255,255,0.03);
-    }
-    .panel .hd h2{
-      font-size: 13px;
+    ul{
       margin: 0;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .panel .hd .small{
-      font-size: 12px;
-      color: var(--muted-2);
-      white-space: nowrap;
-    }
-    .panel .bd{
-      padding: 16px;
+      padding-left: 18px;
     }
 
-    .navlist{
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .navitem{
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      border-radius: var(--radius-md);
-      padding: 12px 12px;
-    }
-    .navitem .top{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-    .navitem .label{
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .navitem .chip{
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      color: var(--muted-2);
-      background: rgba(255,255,255,0.03);
-      white-space: nowrap;
-    }
-    .navitem .desc{
-      font-size: 13px;
-      color: var(--muted);
-      margin: 0;
-    }
-    .navitem .desc em{
-      font-style: normal;
-      color: rgba(255,255,255,0.80);
-    }
-
-    .sections{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 900px){
-      .grid{ grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 520px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-
-    .card{
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      border-radius: var(--radius-md);
-      padding: 14px 14px;
-      min-height: 98px;
-      display:flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
-    }
-    .card:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .card .title{
-      font-weight: 650;
-      font-size: 14px;
-      margin: 0 0 6px;
-      letter-spacing: 0.2px;
-    }
-    .card .sub{
-      margin: 0;
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .card .meta2{
-      margin-top: 10px;
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .tag{
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.72);
-      background: rgba(255,255,255,0.03);
-    }
-    .tag.live{
-      border-color: rgba(34,197,94,0.35);
-      color: rgba(34,197,94,0.95);
-      background: rgba(34,197,94,0.08);
-    }
-    .tag.placeholder{
-      border-color: rgba(255,255,255,0.16);
-      color: rgba(255,255,255,0.60);
-      background: rgba(255,255,255,0.03);
+    li{
+      margin: 6px 0;
     }
 
     .muted{
       color: var(--muted);
       font-size: 13px;
-      margin: 0;
+      margin-top: 6px;
+    }
+
+    a{
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover{
+      color: var(--link-hover);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    code{
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 12px;
     }
 
     footer{
       margin-top: 18px;
-      color: var(--muted-2);
+      color: var(--muted);
       font-size: 12px;
-      padding: 14px 2px 0;
-      display:flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
     }
-    footer a{ color: rgba(255,255,255,0.75); text-decoration: underline; text-underline-offset: 2px; }
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">
-        <p class="kicker">Emhance AI · Corporate Site Mockups</p>
-        <h1>Index (internal)</h1>
-        <p>
-          This page provides context for the non-homepage mockups. The homepage is being developed separately and is
-          not listed here.
-        </p>
-      </div>
-
-      <div class="meta">
-        <div class="pillrow">
-          <span class="pill"><strong>Menu</strong>: Products · Solutions · Technology · Pricing · About Us · Book a Demo · Resources</span>
-          <span class="pill"><strong>Status</strong>: mockups in progress</span>
-        </div>
-        <div class="note">
-          Keep filenames as-is for now. When final IA is confirmed, these can be routed to their production URLs.
-        </div>
-      </div>
+      <h1>Emhance AI website mockups</h1>
+      <p class="sub">
+        The homepage is being designed separately and is not listed here. This index is a simple site tree for the
+        remaining mockup pages.
+      </p>
     </header>
 
-    <div class="main">
-      <!-- Left: Information architecture -->
-      <section class="panel" aria-label="Information architecture">
-        <div class="hd">
-          <h2>Site tree</h2>
-          <div class="small">Top-level nav + submenus</div>
-        </div>
-        <div class="bd">
-          <ul class="navlist">
-            <li class="navitem">
-              <div class="top">
-                <div class="label">Homepage</div>
-                <div class="chip">Not shown here</div>
-              </div>
-              <p class="desc">The homepage mockup has been sent to design and is in progress.</p>
-            </li>
+    <div class="tree" aria-label="Site tree">
+      <ul>
+        <li>
+          Homepage <span class="muted">(not shown here)</span>
+        </li>
 
-            <li class="navitem">
-              <div class="top">
-                <div class="label">Products</div>
-                <div class="chip">Submenu</div>
-              </div>
-              <p class="desc">
-                Pages: <em>Playtest</em>, <em>ASO</em>, <em>Creative</em>.
-              </p>
-            </li>
-
-            <li class="navitem">
-              <div class="top">
-                <div class="label">Solutions</div>
-                <div class="chip">Submenu</div>
-              </div>
-              <p class="desc">
-                For now: only <em>Team</em> pages (<em>Game Designers</em>, <em>User Researchers</em>, <em>Marketers</em>, <em>Executives</em>).
-                The <em>Goal</em> submenu is intentionally omitted in these mockups, but remains part of the planned IA.
-              </p>
-            </li>
-
-            <li class="navitem">
-              <div class="top">
-                <div class="label">Technology</div>
-                <div class="chip">Submenu</div>
-              </div>
-              <p class="desc">
-                Page: <em>Research</em>.
-              </p>
-            </li>
-
-            <li class="navitem">
-              <div class="top">
-                <div class="label">Pricing</div>
-                <div class="chip">Single page</div>
-              </div>
-              <p class="desc">Pricing page mockup.</p>
-            </li>
-
-            <li class="navitem">
-              <div class="top">
-                <div class="label">About Us</div>
-                <div class="chip">Single page</div>
-              </div>
-              <p class="desc">Company overview page mockup.</p>
-            </li>
-
-            <li class="navitem">
-              <div class="top">
-                <div class="label">Book a Demo</div>
-                <div class="chip">Single page</div>
-              </div>
-              <p class="desc">
-                Book a Demo page exists as a stub for now. Copy can be added later.
-              </p>
-            </li>
-
-            <li class="navitem">
-              <div class="top">
-                <div class="label">Resources</div>
-                <div class="chip">Submenu</div>
-              </div>
-              <p class="desc">
-                Pages: <em>Blog</em>, <em>Success Stories</em>, <em>Research / Reports / eBooks (lead magnets)</em>.
-                These exist as stubs for now. Copy can be added later.
-              </p>
-            </li>
+        <li>
+          Products
+          <ul>
+            <li><a href="Playtesting.html">Playtest</a> <span class="muted">(<code>Playtesting.html</code>)</span></li>
+            <li><a href="ASO.html">ASO</a> <span class="muted">(<code>ASO.html</code>)</span></li>
+            <li><a href="Creative.html">Creative</a> <span class="muted">(<code>Creative.html</code>)</span></li>
           </ul>
-        </div>
-      </section>
+        </li>
 
-      <!-- Right: Link cards -->
-      <section class="sections" aria-label="Mockup links">
-        <section class="panel">
-          <div class="hd">
-            <h2>Products</h2>
-            <div class="small">User testing + growth surfaces</div>
-          </div>
-          <div class="bd">
-            <div class="grid">
-              <a class="card" href="Playtesting.html">
-                <div>
-                  <p class="title">Playtest</p>
-                  <p class="sub">Core product page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Products</span>
-                </div>
-              </a>
+        <li>
+          Solutions
+          <ul>
+            <li>
+              Team
+              <ul>
+                <li><a href="Game_Design.html">Game Designers</a> <span class="muted">(<code>Game_Design.html</code>)</span></li>
+                <li><a href="User_Research.html">User Researchers</a> <span class="muted">(<code>User_Research.html</code>)</span></li>
+                <li><a href="Marketers.html">Marketers</a> <span class="muted">(<code>Marketers.html</code>)</span></li>
+                <li><a href="Executives.html">Executives</a> <span class="muted">(<code>Executives.html</code>)</span></li>
+              </ul>
+            </li>
+            <li class="muted">Goal submenu (planned, omitted for now)</li>
+          </ul>
+        </li>
 
-              <a class="card" href="ASO.html">
-                <div>
-                  <p class="title">ASO</p>
-                  <p class="sub">App Store page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Products</span>
-                </div>
-              </a>
+        <li>
+          Technology
+          <ul>
+            <li><a href="Science_Research.html">Research</a> <span class="muted">(<code>Science_Research.html</code>)</span></li>
+          </ul>
+        </li>
 
-              <a class="card" href="Creative.html">
-                <div>
-                  <p class="title">Creative</p>
-                  <p class="sub">Creative testing page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Products</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
+        <li><a href="Pricing.html">Pricing</a> <span class="muted">(<code>Pricing.html</code>)</span></li>
 
-        <section class="panel">
-          <div class="hd">
-            <h2>Solutions</h2>
-            <div class="small">Team pages (Goal submenu planned)</div>
-          </div>
-          <div class="bd">
-            <div class="grid">
-              <a class="card" href="Game_Design.html">
-                <div>
-                  <p class="title">Game Designers</p>
-                  <p class="sub">Role-based page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Solutions</span>
-                </div>
-              </a>
+        <li>
+          About Us
+          <ul>
+            <li><a href="About_Us.html">About Us</a> <span class="muted">(<code>About_Us.html</code>)</span></li>
+          </ul>
+        </li>
 
-              <a class="card" href="User_Research.html">
-                <div>
-                  <p class="title">User Researchers</p>
-                  <p class="sub">Role-based page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Solutions</span>
-                </div>
-              </a>
+        <li><a href="Book_A_Demo.html">Book a Demo</a> <span class="muted">(<code>Book_A_Demo.html</code>)</span></li>
 
-              <a class="card" href="Marketers.html">
-                <div>
-                  <p class="title">Marketers</p>
-                  <p class="sub">Role-based page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Solutions</span>
-                </div>
-              </a>
+        <li>
+          Resources
+          <ul>
+            <li><a href="Blog.html">Blog</a> <span class="muted">(<code>Blog.html</code>)</span></li>
+            <li><a href="Success_Stories.html">Success Stories</a> <span class="muted">(<code>Success_Stories.html</code>)</span></li>
+            <li><a href="Reports.html">Research / Reports / eBooks</a> <span class="muted">(<code>Reports.html</code>)</span></li>
+          </ul>
+        </li>
+      </ul>
 
-              <a class="card" href="Executives.html">
-                <div>
-                  <p class="title">Executives</p>
-                  <p class="sub">Role-based page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Solutions</span>
-                </div>
-              </a>
-            </div>
-
-            <p class="muted" style="margin-top:12px;">
-              Note: The <strong>Goal</strong> submenu (e.g., retention, conversion, onboarding) is planned, but intentionally omitted from this mockup index for now.
-            </p>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="hd">
-            <h2>Technology</h2>
-            <div class="small">How it works</div>
-          </div>
-          <div class="bd">
-            <div class="grid">
-              <a class="card" href="Science_Research.html">
-                <div>
-                  <p class="title">Research</p>
-                  <p class="sub">Technology / research page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Technology</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="hd">
-            <h2>Company</h2>
-            <div class="small">Commercial basics</div>
-          </div>
-          <div class="bd">
-            <div class="grid">
-              <a class="card" href="Pricing.html">
-                <div>
-                  <p class="title">Pricing</p>
-                  <p class="sub">Pricing page mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Company</span>
-                </div>
-              </a>
-
-              <a class="card" href="About_Us.html">
-                <div>
-                  <p class="title">About Us</p>
-                  <p class="sub">Company overview mockup.</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag live">Mockup</span>
-                  <span class="tag">Company</span>
-                </div>
-              </a>
-
-              <a class="card" href="Book_A_Demo.html">
-                <div>
-                  <p class="title">Book a Demo</p>
-                  <p class="sub">Stub page (copy TBD).</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag placeholder">Stub</span>
-                  <span class="tag">CTA</span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="hd">
-            <h2>Resources</h2>
-            <div class="small">Content + proof</div>
-          </div>
-          <div class="bd">
-            <div class="grid">
-              <a class="card" href="Blog.html">
-                <div>
-                  <p class="title">Blog</p>
-                  <p class="sub">Stub page (copy TBD).</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag placeholder">Stub</span>
-                  <span class="tag">Resources</span>
-                </div>
-              </a>
-
-              <a class="card" href="Success_Stories.html">
-                <div>
-                  <p class="title">Success Stories</p>
-                  <p class="sub">Stub page (copy TBD).</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag placeholder">Stub</span>
-                  <span class="tag">Resources</span>
-                </div>
-              </a>
-
-              <a class="card" href="Reports.html">
-                <div>
-                  <p class="title">Research / Reports / eBooks</p>
-                  <p class="sub">Lead magnet hub (copy TBD).</p>
-                </div>
-                <div class="meta2">
-                  <span class="tag placeholder">Stub</span>
-                  <span class="tag">Resources</span>
-                </div>
-              </a>
-            </div>
-
-            <p class="muted" style="margin-top:12px;">
-              If you share even rough positioning for these stubs (Book a Demo, Blog, Success Stories, Reports),
-              I can add lightweight “placeholder copy” that still feels on-brand.
-            </p>
-          </div>
-        </section>
-      </section>
+      <p class="muted">
+        Note: Book a Demo, Blog, Success Stories, and Research/Reports are placeholders. Copy can be added when you share direction.
+      </p>
     </div>
 
     <footer>
-      <div>© 2026 Emhance AI (internal mockups). All rights reserved.</div>
-      <div>
-        <a href="index.html">Index</a> ·
-        <a href="Playtesting.html">Playtest</a> ·
-        <a href="Pricing.html">Pricing</a>
-      </div>
+      © 2026 Emhance AI (mockups).
     </footer>
   </div>
 </body>
