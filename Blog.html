@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog – Sensemitter</title>
+    <meta name="description" content="Stay updated with industry trends, tips, and insights through our expert blog posts on game playtesting and creative analysis.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0E1A2B',
+                            darker: '#050a11',
+                            purple: '#6B5AED',
+                            pink: '#F36ED2',
+                            green: '#86E27B',
+                            surface: '#F5F7FF',
+                            light: '#C9D3FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 0%, rgba(147, 58, 230, 0.25) 0%, rgba(14, 26, 43, 0) 70%)',
+                        'card-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0E1A2B;
+            color: #F5F7FF;
+        }
+        .glass-panel {
+            background: rgba(245, 247, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 211, 255, 0.1);
+        }
+        .glass-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .glass-input:focus {
+            border-color: #6B5AED;
+            outline: none;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #F36ED2, #6B5AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hover-card:hover {
+            border-color: rgba(107, 90, 237, 0.5);
+            transform: translateY(-2px);
+            background: rgba(245, 247, 255, 0.06);
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+<nav class="fixed w-full z-50 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-20">
+            <a href="/" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center font-bold text-white shadow-lg group-hover:shadow-brand-purple/50 transition-shadow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                </div>
+                <span class="font-display font-bold text-xl tracking-tight">Sensemitter</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#" class="text-brand-light hover:text-white transition-colors">Services</a>
+                <a href="#" class="text-brand-light hover:text-white transition-colors">Use Cases</a>
+                <a href="#" class="text-white font-medium border-b-2 border-brand-purple pb-0.5">Blog</a>
+                <a href="#" class="text-brand-light hover:text-white transition-colors">Company</a>
+                <a href="#demo" class="px-5 py-2.5 rounded-full bg-brand-purple hover:bg-brand-pink transition-colors font-semibold text-white shadow-[0_0_15px_rgba(107,90,237,0.4)]">
+                    Request Demo
+                </a>
+            </div>
+
+            <div class="md:hidden text-white cursor-pointer">
+                <i data-lucide="menu"></i>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="relative pt-36 pb-16">
+    <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
+    <div class="relative max-w-5xl mx-auto px-6 text-center">
+        <span class="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-brand-purple text-xs font-bold uppercase tracking-widest mb-6">
+            Resources
+        </span>
+        <h1 class="text-5xl md:text-6xl font-display font-bold mb-6 leading-tight">
+            Gaming insights<br>
+            <span class="text-gradient">& Industry Updates</span>
+        </h1>
+        <p class="text-xl text-brand-light/80 max-w-2xl mx-auto leading-relaxed">
+            Stay updated with industry trends, tips, and insights through our expert blog posts on playtesting and creative analysis.
+        </p>
+    </div>
+</section>
+
+<section class="pb-12 sticky top-20 z-40 bg-brand-dark/95 backdrop-blur-xl border-b border-white/5 md:bg-transparent md:border-none md:static">
+    <div class="max-w-7xl mx-auto px-6 flex justify-center">
+        <div class="glass-panel p-1.5 rounded-full inline-flex gap-1">
+            <button class="px-6 py-2 rounded-full bg-brand-purple text-white text-sm font-semibold shadow-lg">All</button>
+            <button class="px-6 py-2 rounded-full text-brand-light hover:text-white hover:bg-white/5 transition-colors text-sm font-medium">Articles</button>
+            <button class="px-6 py-2 rounded-full text-brand-light hover:text-white hover:bg-white/5 transition-colors text-sm font-medium">Webinar</button>
+        </div>
+    </div>
+</section>
+
+<section class="pb-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-video w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/10/ftue-webinar-1.png" alt="FTUE Webinar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-brand-pink text-white text-xs font-bold uppercase tracking-wider shadow-lg">Webinar</span>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <div class="flex items-center gap-2 text-brand-light/60 text-xs mb-3 font-mono">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 1 min read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        FTUE monetization secrets: How top games convert players into payers
+                    </h3>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-video w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/09/isabel-news-1.webp" alt="Isabel Ferreira" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-brand-purple text-white text-xs font-bold uppercase tracking-wider shadow-lg">Articles</span>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <div class="flex items-center gap-2 text-brand-light/60 text-xs mb-3 font-mono">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 2 min read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        Sensemitter welcomes Isabel Ferreira as VP of Business Development
+                    </h3>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-video w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/09/dr.-john-hopson-news.webp" alt="Dr. John Hopson" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-brand-purple text-white text-xs font-bold uppercase tracking-wider shadow-lg">Articles</span>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <div class="flex items-center gap-2 text-brand-light/60 text-xs mb-3 font-mono">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 2 min read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        Sensemitter welcomes Dr. John Hopson as VP of Research
+                    </h3>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-video w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/09/1-2.png" alt="Neuroscience" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-brand-pink text-white text-xs font-bold uppercase tracking-wider shadow-lg">Webinar</span>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <div class="flex items-center gap-2 text-brand-light/60 text-xs mb-3 font-mono">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 1 min read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        The neuroscience of rewards: how dopamine builds game addiction
+                    </h3>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-video w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/07/flaws-blog-cover.png" alt="Testing Methodologies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-brand-purple text-white text-xs font-bold uppercase tracking-wider shadow-lg">Articles</span>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <div class="flex items-center gap-2 text-brand-light/60 text-xs mb-3 font-mono">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 5 min read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        Addressing flaws in standard testing methodologies with AI-powered playtesting
+                    </h3>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group glass-panel rounded-3xl overflow-hidden hover-card transition-all duration-300 flex flex-col h-full">
+                <div class="aspect-video w-full overflow-hidden relative">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent opacity-60 z-10"></div>
+                    <img src="https://sensemitter.com/wp-content/uploads/2025/04/loom-blog-cover.png" alt="Platform Overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-4 left-4 z-20 px-3 py-1 rounded-md bg-brand-purple text-white text-xs font-bold uppercase tracking-wider shadow-lg">Articles</span>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <div class="flex items-center gap-2 text-brand-light/60 text-xs mb-3 font-mono">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 1 min read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3 group-hover:text-brand-purple transition-colors">
+                        How to launch tests on the Sensemitter Platform
+                    </h3>
+                    <div class="mt-auto pt-6 flex items-center text-sm text-brand-green font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                        Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="mt-16 text-center">
+            <button type="button" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 transition-colors font-semibold text-white/80 hover:text-white uppercase tracking-wider text-xs">
+                Load more posts <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id="demo" class="pb-24 pt-10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="glass-panel rounded-3xl p-8 md:p-16 border-white/5 bg-gradient-to-b from-brand-dark to-brand-darker relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-96 h-96 bg-brand-purple/20 blur-[100px] rounded-full pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
+                        Start optimizing<br>
+                        <span class="text-gradient">your game today</span>
+                    </h2>
+                    <p class="text-brand-light/80 text-lg mb-8 leading-relaxed">
+                        Fill out the form and our manager will contact you soon to demonstrate how AI-powered playtesting can improve your retention and conversion.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center text-brand-purple">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-white">Detailed market reports</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-pink/20 flex items-center justify-center text-brand-pink">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-white">Emotional engagement analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs uppercase tracking-wide text-brand-light/60 font-bold ml-1">Business Email *</label>
+                            <input type="email" class="w-full rounded-xl px-4 py-3 glass-input transition-colors" placeholder="name@company.com">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs uppercase tracking-wide text-brand-light/60 font-bold ml-1">Company Name *</label>
+                            <input type="text" class="w-full rounded-xl px-4 py-3 glass-input transition-colors" placeholder="Studio Name">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs uppercase tracking-wide text-brand-light/60 font-bold ml-1">First Name *</label>
+                            <input type="text" class="w-full rounded-xl px-4 py-3 glass-input transition-colors">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs uppercase tracking-wide text-brand-light/60 font-bold ml-1">Last Name *</label>
+                            <input type="text" class="w-full rounded-xl px-4 py-3 glass-input transition-colors">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs uppercase tracking-wide text-brand-light/60 font-bold ml-1">Link to Mobile Game</label>
+                        <input type="text" class="w-full rounded-xl px-4 py-3 glass-input transition-colors" placeholder="https://...">
+                    </div>
+                    
+                    <div class="pt-4">
+                        <button class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-purple to-brand-pink hover:to-brand-purple transition-all font-bold text-white shadow-lg text-lg">
+                            Request Demo
+                        </button>
+                    </div>
+                    <p class="text-xs text-center text-brand-light/40 mt-4">By clicking, you consent to receive our marketing communications.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="border-t border-white/10 py-16 bg-brand-darker">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-sm mb-16">
+            <div class="col-span-1 md:col-span-1">
+                 <a href="/" class="flex items-center gap-2 mb-6">
+                    <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center font-bold text-white">
+                        S
+                    </div>
+                    <span class="font-display font-bold text-xl">Sensemitter</span>
+                </a>
+                <p class="text-brand-light/60 leading-relaxed mb-6">
+                    Sensemitter Services LTD.<br>
+                    Spyrou Araouzou, 2, Faysa House,<br>
+                    2nd floor, 201, 3036, Limassol, Cyprus
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://x.com/sensemitter" target="_blank" class="text-brand-light/60 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="https://www.linkedin.com/company/sensemitter/" target="_blank" class="text-brand-light/60 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="https://www.facebook.com/sensemitter/" target="_blank" class="text-brand-light/60 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div class="md:col-start-3">
+                <div class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Services</div>
+                <ul class="space-y-3 text-brand-light/70">
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Game Playtesting</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Creatives Analysis</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Use Cases</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Company</div>
+                <ul class="space-y-3 text-brand-light/70">
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Careers</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                 <div class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Resources</div>
+                <ul class="space-y-3 text-brand-light/70">
+                    <li><a href="#" class="hover:text-brand-purple transition-colors text-white font-medium">Blog</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Free Reports</a></li>
+                    <li><a href="#" class="hover:text-brand-purple transition-colors">Case Studies</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-brand-light/40">
+            <div>© 2026 Sensemitter. All rights reserved.</div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
